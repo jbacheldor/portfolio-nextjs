@@ -1,23 +1,16 @@
 'use client'
 import { redirect } from 'next/navigation'
+import { useState } from 'react'
+import { ProjectCards as ProjectCardType } from '../types/Projects'
 
-
-type Props = {
-    link: string,
-    title: string,
-    description: string,
-    video?: string,
-    image?: string,
-    techStack?: string[]
-}
-
-const ProjectCards:React.FC<Props> = (props: Props) => {
+const ProjectCards:React.FC<ProjectCardType> = (props: ProjectCardType) => {
     const {link, title, description} = props
     const techStack = ["nextjs", "ts", "vercel"]
+    const [openProject, setProject] = useState("")
 
-    const openProject = () => {
-        redirect(`/${link}`)
-    }
+    // const openProject = () => {
+    //     redirect(`/${link}`)
+    // }
 
     return (
         <div className="project-body">

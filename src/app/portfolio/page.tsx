@@ -1,16 +1,15 @@
 'use client'
 import ProjectCards from "../components/ProjectCards";
-
+import { projectsData } from "../data/projects";
 
 const PortfolioPage = () => {
 
-    const des = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis nulla nec lacus rhoncus laoreet. Integer velit lacus, bibendum a sodales sed, consequat non quam. Cras vitae magna eu eros."
-
     return (
         <div id="projects">
-        <ProjectCards title="hangul drag & drop" description={des} link="https://github.com/jbacheldor/dragAndDropHangul"/>
-        <ProjectCards title="hangul drag & drop" description=" blah blak" link="https://github.com/jbacheldor/dragAndDropHangul"/>
-        <ProjectCards title="hangul drag & drop" description=" blah blak" link="https://github.com/jbacheldor/dragAndDropHangul"/>
+            {projectsData.map((i, key)=> {
+                return  <ProjectCards {...i}/>
+                
+            })}
         <style jsx>
             {`
             div#projects {
