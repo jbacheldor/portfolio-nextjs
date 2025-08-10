@@ -1,9 +1,11 @@
 'use client'
 import { redirect } from 'next/navigation'
 import styles from './navstyle.module.css'
+import { useEffect, useState } from 'react'
 
 const Navigation:React.FC = () => {
-    const links: string[] = ["home", "about", "contact", "portfolio", "resume", "design"]
+    const links: string[] = ["about", "contact", "portfolio", "resume", "design", "reviews"]
+    const [active, setActive] = useState("")
 
     const redirectTo = (value: string) => {
         if(value == "github"){
@@ -13,24 +15,64 @@ const Navigation:React.FC = () => {
         }
     }
 
+    useEffect(()=> {
+        if(window){
+            setActive(window.location.pathname.slice(1))
+        }
+    }, [])
+
+    const changeContent = (e: string) => {
+        setActive(e)
+        redirect(`/${e}`)
+    }
+
     return (
         <>
         <div id="header"  className={styles.header}>
-            <h1>Jess Bacheldor</h1>
-            <div>
+            <span><h1 onClick={() => redirect("/about")}>Jess Bacheldor</h1>
+             <h4>(she/her)</h4></span>
+             <span className={styles.rightside}>
+            <div >
                 <img onClick={() => redirectTo("linkedin")} alt="linkedin" className={styles.links} src={"/inBug-Black.png"} width="20px" height="20px"/>
                 <img onClick={() => redirectTo("github")} alt="github" className={styles.links} src={"/github-mark.svg"} width="20px" height="20px"/>
             </div>
+            <a href="mailto: jessica.bacheldor@gmail.com">jessica.bacheldor@gmail.com</a>
+        </span>
         </div>
         <div id="navigation" className={styles.navigation}>
-
             {links.map((i, key)=> {
                 return (
-                    <button onClick={()=>{redirect(`/${i}`)}} className={styles.navbutton} key={`${key}-button`}>{i}</button>
+                    <button id={i == active ? "active" : ""} onClick={()=> changeContent(i)} key={`${key}-button`}>{i}</button>
                 )
             })}
         </div>
         <hr/>
+        <style jsx>
+            {`
+                button {
+                    text-decoration: none;
+                    padding: 10px;
+                    margin: 10px;
+                    border-radius: 20px;
+                    background-color: pink;
+                    box-shadow: 2px 2px 10px purple;
+                    color: white;
+                    text-shadow: 2px 2px 10px silver;
+                    border: none;
+                    transition: top ease 0.5s;
+                }
+                button#active {
+                    background-color: purple;
+                }
+                button:hover {
+                    cursor: pointer;
+                    position: relative;
+                    top: -1px;
+                    box-shadow: 4px 4px 10px purple, 2px 2px 20px dodgerblue;
+                    }
+
+            `}
+        </style>
         </>
     )
 }
