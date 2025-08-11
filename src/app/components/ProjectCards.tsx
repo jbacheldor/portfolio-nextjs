@@ -4,8 +4,7 @@ import { useState } from 'react'
 import { ProjectCards as ProjectCardType } from '../types/Projects'
 
 const ProjectCards:React.FC<ProjectCardType> = (props: ProjectCardType) => {
-    const {link, title, description} = props
-    const techStack = ["nextjs", "ts", "vercel"]
+    const {link, title, description, techStack} = props
     const [openProject, setProject] = useState("")
 
     // const openProject = () => {
@@ -21,7 +20,7 @@ const ProjectCards:React.FC<ProjectCardType> = (props: ProjectCardType) => {
 
             </div>
             <div className="techbuttons">
-                {techStack.map((i, key)=>{
+                {techStack?.map((i, key)=>{
                     return (
                         <div key={key} className='techButton'>{i}</div>
                     )
