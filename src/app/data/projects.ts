@@ -1,6 +1,6 @@
-import { ProjectCards } from "../types/Projects";
+import { ProjectCardsType } from "../types/Projects";
 
-export const projectsData: ProjectCards[] = [
+export const projectsData: ProjectCardsType[] = [
     {
         title: 'hangul drag & drop',
         link: 'https://jbacheldor.github.io/dragAndDropHangul/',

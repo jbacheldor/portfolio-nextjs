@@ -12,4 +12,5 @@ export const svgData: SVGType[] = [
     { title: 'medium star', image: '/svgs/md-star.svg'},
     { title: 'big star', image: '/svgs/bg-star.svg'},
     { title: 'strong chicken', image: '/svgs/strongchicken.svg'},
+    { title: 'closed folder', image: '/svgs/closed-folder.svg'},
 ]

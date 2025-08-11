@@ -9,7 +9,7 @@ const DesignPage:React.FC = () => {
             <hr/>
             <h3>Websites</h3>
             <hr/>
-            <h3>SVG Icons / Digital Art</h3>
+            <h3>SVG Icons</h3>
             <hr/>
             <div className="svgs">
             {svgData.map((i)=> {

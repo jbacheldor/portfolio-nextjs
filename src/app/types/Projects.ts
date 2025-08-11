@@ -1,4 +1,4 @@
-export type ProjectCards = {
+export type ProjectCardsType = {
     link: string,
     title: string,
     repolink: string,
@@ -6,4 +6,5 @@ export type ProjectCards = {
     video?: string,
     image?: string,
     techStack?: string[]
+    onClick: (value: string) => void;
 }

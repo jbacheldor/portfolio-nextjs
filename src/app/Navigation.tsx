@@ -4,7 +4,7 @@ import styles from './navstyle.module.css'
 import { useEffect, useState } from 'react'
 
 const Navigation:React.FC = () => {
-    const links: string[] = ["about", "contact", "portfolio", "resume", "design", "reviews"]
+    const links: string[] = ["about", "resume", "portfolio", "design", "reviews"]
     const [active, setActive] = useState("")
 
     const redirectTo = (value: string) => {
