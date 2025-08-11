@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { ProjectCards as ProjectCardType } from '../types/Projects'
 
 const ProjectCards:React.FC<ProjectCardType> = (props: ProjectCardType) => {
-    const {link, title, description, techStack} = props
+    const {link, title, description, techStack, repolink, image} = props
     const [openProject, setProject] = useState("")
 
     // const openProject = () => {
@@ -17,7 +17,7 @@ const ProjectCards:React.FC<ProjectCardType> = (props: ProjectCardType) => {
                 {title}
             </h3>
             <div className='project-main' >
-
+                {image && <img src={image}/>}
             </div>
             <div className="techbuttons">
                 {techStack?.map((i, key)=>{
@@ -35,21 +35,29 @@ const ProjectCards:React.FC<ProjectCardType> = (props: ProjectCardType) => {
             div.project-body {
                 border: 1px black solid;
                 border-radius: 5px;
-                width: 300px;
+                width: 400px;
                 margin: 10px;
-                height: 300px;
-                background-color: pink;
+                height: 400px;
+                background-color: peachpuff;
             }
             .project-title {
                 text-align: center;
                 padding: 5px;
             }
             .project-main {
-                background-color: white;
+                text-align: center;
                 margin: 10px;
-                height: 150px;
+                height: 230px;
                 border-radius: 5px;
-                border: 1 solid black;
+            }
+            img {
+                width: inherit;
+                height: inherit;
+                max-height: 230px;
+                max-width: 380px;
+                overflow: hidden;
+                border-radius: 5px;
+                border: 1px solid black;
             }
             .project-main:hover {
                 cursor: pointer;
@@ -69,8 +77,8 @@ const ProjectCards:React.FC<ProjectCardType> = (props: ProjectCardType) => {
             }
             .techButton {
                 border-radius: 20px;
-                color: white;
-                background-color: purple;
+                color: chocolate;
+                background-color: pink;
                 padding: 5px;
                 min-width: 60px;
                 text-align: center;

@@ -17,11 +17,17 @@ const SVGCard:React.FC<SVGType> = (props: SVGType) => {
                     box-shadow: 2px 2px 10px dodgerblue;
                     width: 170px;
                     border-radius: 10px;
-                    border: 1px solid black;
+                    // border: 1px solid black;
                     padding: 10px;
                     margin: 20px;
                     text-align: center;
+                    transition: top ease 0.5s;
                 }
+                div.svg-body:hover {
+                    box-shadow: 2px 2px 10px dodgerblue, 4px 4px 10px purple;
+                    position: relative;
+                    top: -1px;
+                }    
                 h3 {
                     min-height: 40px;
                 }

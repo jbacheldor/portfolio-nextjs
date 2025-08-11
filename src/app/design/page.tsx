@@ -5,10 +5,12 @@ import { svgData } from "../data/svgs"
 const DesignPage:React.FC = () => {
     return (
         <div id="design-body">
-            <h2>Design!!!</h2>
-            <h3>Sewing</h3>
-            <h3>Photography</h3>
+            <h2>Design !</h2>
+            <hr/>
+            <h3>Websites</h3>
+            <hr/>
             <h3>SVG Icons / Digital Art</h3>
+            <hr/>
             <div className="svgs">
             {svgData.map((i)=> {
                 return (
@@ -16,13 +18,23 @@ const DesignPage:React.FC = () => {
                 )
             })}
             </div>
-            <h3>Websites</h3>
             <style jsx>
                 {`
+                h2 {
+                    margin: 10px;
+                }
+                hr {
+                    width: 80%;
+                    margin: 5px;
+                    height: 5px;
+                    border-radius: 5px;
+                    background-color: peachpuff;
+                    border: none;
+                }
                 div#design-body {
                     display: flex;
                     flex-direction: column;
-                    margin: 100px;
+                    margin: 0 80px;
                     align-items: center;
                 }
                 .svgs {
