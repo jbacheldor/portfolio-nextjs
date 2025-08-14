@@ -14,7 +14,7 @@ const SVGCard:React.FC<SVGType> = (props: SVGType) => {
             <style jsx>
                 {`
                 div.svg-body {
-                    box-shadow: 2px 2px 10px dodgerblue;
+                    box-shadow: 2px 2px 10px peachpuff;
                     width: 170px;
                     border-radius: 10px;
                     // border: 1px solid black;
@@ -22,9 +22,10 @@ const SVGCard:React.FC<SVGType> = (props: SVGType) => {
                     margin: 20px;
                     text-align: center;
                     transition: top ease 0.5s;
+                    background-color: palegoldenrod;
                 }
                 div.svg-body:hover {
-                    box-shadow: 2px 2px 10px dodgerblue, 4px 4px 10px purple;
+                    box-shadow: 2px 2px 10px peachpuff, 4px 4px 10px pink;
                     position: relative;
                     top: -1px;
                 }    

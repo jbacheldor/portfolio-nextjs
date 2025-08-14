@@ -1,5 +1,8 @@
 'use client'
 
+import { redirect } from "next/navigation";
+import Button from "../components/Button";
+
 const Resume:React.FC = () => {
     return(
     <div id="portfolio-body">
@@ -7,9 +10,9 @@ const Resume:React.FC = () => {
     <div id="bio">linkedin - extended</div>
     <hr/>
     <div id="buttons">
-        <button>leadership</button>
-        <button>education</button>
-        <button>professional</button>
+        <Button text="leadership"  onClick={()=> {redirect("#leadership")}}/> 
+        <Button text="education"  onClick={()=> {redirect("#education")}}/> 
+        <Button text="professional"  onClick={()=> {redirect("#professional")}}/> 
     </div>
 
     <div id="timeline">
@@ -86,8 +89,56 @@ const Resume:React.FC = () => {
         </div>
         <hr/>
     </div>
-    <div>
-        Education?????
+    <div id="leadership">
+        <h3>Leadership</h3>
+        <div className="section">
+            <h4>college</h4>
+            <h5>commencement speaker at graduation</h5>
+            <h5>amnesty international</h5>
+            <span>president, Student activist coordinator, on the website</span>
+            <span>Not Enough - Impact Report - 2018/2019</span>
+            <p>https://www.amnesty.org/en/latest/research/2019/11/the-not-enough-impact-report-201819/</p>
+            <span>lobbied in congress 2</span>
+            <span>lobbied in congress v1</span>
+            <span>cosponsored a refugee family</span>
+            <span>passed a compus wide resolution welcoming refugees</span>
+            <span>longer table event</span>
+            <span>numerous letter writing campaigns</span>
+            <span>gun violence panel - focused in detroit - number of local non-profits </span>
+            <span>immigration panel - aclu and aiusa </span>
+            <span>water event focused on water shut offs in detroit</span>
+            <h5>delta phi epsilon</h5>
+            <span>head of recruitment, guidance whatever they were called</span>
+            <h4>GE specific</h4>
+            <h5>grace hopper representation for dtlp</h5>
+            <span>answered questions for women looking to join stem initiatives</span>
+            <h5>10,000 coffees</h5>
+            <span>helped figure out what group to include in launch demographic </span>
+            <h5>affinity community</h5>
+            <span>ramadan, brazil, current events, etc - programming for all</span>
+            <h5>first ever panel for mytech representing women in stem </h5>
+            <span>covered dtlp angles</span>
+            <h5>onboarding</h5>
+            <span>ensured new dtlps had required gear, knowledge, and information pertaining to things such as the educational funds accessible to them </span>
+            <h5>that one ,,, for uhhh,,, what's it called,,, ?</h5>
+            <span> i have no clue what i was sayig here - i think communications for nonprofit situation</span>
+            <h5>that time i had a literal intern,,, or intern buddy</h5>
+            <span>???</span>
+        </div>
+    </div>
+        <div id="education">
+        <h3>Education</h3>
+        <div className="section">
+            <h4>undergrad</h4>
+            <span>2014-2019</span>
+            <span>University of Michigan - Dearborn</span>
+            <span>B.A. in English and B.S. in Computer Science</span>
+            <h4>masters</h4>
+            <span>2024-present</span>
+            <span>Georgia Tech</span>
+            <span>Online Masters in Computer Science</span>
+            <p></p>
+        </div>
     </div>
     <style jsx>
         {`
