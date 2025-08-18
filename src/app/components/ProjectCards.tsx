@@ -67,12 +67,16 @@ const ProjectCards:React.FC<Props> = (props: Props) => {
             .project-main:hover {
                 cursor: pointer;
             }    
-            .project-description {
+            #project-description {
                 margin: 10px;
                 font-size: small;
                 text-overflow: ellipsis;
                 overflow: hidden;
-                max-height: 7ch;
+                height: 70px;
+                border: 1px solid black;
+                border-radius: 5px;
+                padding: 5px;
+                background-color: cornsilk;
             }
             .techbuttons {
                 display: flex;
@@ -89,6 +93,9 @@ const ProjectCards:React.FC<Props> = (props: Props) => {
                 text-align: center;
                 font-size: small;
                 font-weight: 600;
+            }
+            a {
+                text-decoration: underline;
             }
 
             `}

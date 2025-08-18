@@ -76,6 +76,9 @@ const ProjectPopup:React.FC<Props> = (props: Props) => {
             button:hover {
                 cursor: pointer;
             }
+            a {
+                text-decoration: underline;
+            }
 
             
             `}

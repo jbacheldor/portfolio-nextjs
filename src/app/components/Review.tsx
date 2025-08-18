@@ -30,7 +30,7 @@ const Review:React.FC<Props> = ({name, review, date, relation, company, rating})
             div#review-body {
                 background-color: pink;
                 border-radius: 20px;
-                width: 250px;
+                min-width: 250px;
                 text-align:center;
                 padding: 10px;
                 margin: 10px;
