@@ -41,13 +41,28 @@ const fakeData = [
         relation: 'coworker',
         company: 'ge'
     },
+        {   name: "one",
+        review: "jess is soo stellar and cool",
+        date: 'today',
+        relation: 'coworker',
+        company: 'ge'
+    },
+    {   name: "two",
+        review: "jess is soo stellar and cool",
+        date: 'today',
+        relation: 'coworker',
+        company: 'ge'
+    },
 ]
 
 const ReviewsPage:React.FC = () => {
     const [data, setData] = useState([])
+    const [carosel, setCarosel] = useState(0)
 
     useEffect(()=> {
         // on load get that data!!
+        let carosel = (fakeData.length-1.5) * 250
+        setCarosel(carosel)
     }, [])
 
     return (
@@ -65,7 +80,7 @@ const ReviewsPage:React.FC = () => {
         </div>
         <div id="reviews">
         {fakeData.map((key, index)=> (
-                <Review name={key.name} review={key.review} date={key.date} relation={key.relation} company={key.company}/>
+                <Review carosel={carosel} name={key.name} review={key.review} date={key.date} relation={key.relation} company={key.company}/>
             ))
             }
         </div>
@@ -95,14 +110,6 @@ const ReviewsPage:React.FC = () => {
                     display: flex;
                     flex-direction: row;
                     justify-content: center;
-                    animation: horizontalLoop 20s linear infinite;
-                }
-                @keyframes horizontalLoop {
-                0% {
-                    transform: translateX(0px);
-                }
-                100% {
-                    transform: translateX(-100%);
                 }
             }
             `}
