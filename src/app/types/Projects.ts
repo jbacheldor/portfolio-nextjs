@@ -6,5 +6,5 @@ export type ProjectCardsType = {
     video?: string,
     image?: string,
     techStack?: string[]
-    onClick: (value: string) => void;
+    onClick?: (value: string) => void;
 }

@@ -33,9 +33,7 @@ const ProjectCards:React.FC<Props> = (props: Props) => {
                     )
                 })}
             </div>
-            <div className='project-description'>
-                {description}
-            </div>
+            <div id="project-description" dangerouslySetInnerHTML={{__html: description}}/>
 
         <style jsx>
             {`

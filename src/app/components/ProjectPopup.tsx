@@ -1,5 +1,6 @@
 'use client'
 
+import { Html } from "next/document";
 import { ProjectCardsType } from "../types/Projects";
 import Button from "./Button";
 
@@ -32,9 +33,7 @@ const ProjectPopup:React.FC<Props> = (props: Props) => {
                     <Button text={key}  onClick={()=>console.log()}/>
                 ))}
             </div>
-            <div id="description">
-                {description}
-            </div>
+            <div id="description" dangerouslySetInnerHTML={{__html: description}}/>
             <div id="buttons">
                 <Button text="codebase" onClick={()=>openLink(repolink)}/>
                 <Button text="website" onClick={()=>openLink(link)}/>
@@ -44,9 +43,9 @@ const ProjectPopup:React.FC<Props> = (props: Props) => {
         <style jsx>
             {`
             div.popup-window {
-                position: fixed;
+                position: absolute;
                 // height: 500px;
-                width: 400px;
+                width: 500px;
                 background-color: peachpuff;
                 border: 1px solid black;
             }
