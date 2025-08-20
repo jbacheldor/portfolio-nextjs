@@ -30,7 +30,7 @@ const ProjectPopup:React.FC<Props> = (props: Props) => {
             </div>
             <div id="tech-stack">
                 {techStack?.map((key, index)=> (
-                    <Button text={key}  onClick={()=>console.log()}/>
+                    <Button text={key} />
                 ))}
             </div>
             <div id="description" dangerouslySetInnerHTML={{__html: description}}/>

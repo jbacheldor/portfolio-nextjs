@@ -7,14 +7,12 @@ const DesignPage:React.FC = () => {
         <div id="design-body">
             <h2>Design !</h2>
             <hr/>
-            <h3>Animation</h3>
-            <hr/>
             <h3>SVG Icons</h3>
             <hr/>
-            <div>
+            {/* <div>
                 <button>utility</button>
                 <button>characters</button>
-            </div>
+            </div> */}
             <div className="svgs">
             {svgData.map((i)=> {
                 return (

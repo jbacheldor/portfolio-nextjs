@@ -2,7 +2,7 @@
 
 type Props = {
     text: string,
-    onClick: () => void
+    onClick?: () => void
 }
 
 const Button:React.FC<Props> = ({text, onClick}) => {

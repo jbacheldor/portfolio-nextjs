@@ -1,5 +1,6 @@
 'use client'
 import { SVGType } from "../types/SVGS";
+import Button from "./Button";
 
 const SVGCard:React.FC<SVGType> = (props: SVGType) => {
     const {title, image} = props
@@ -9,7 +10,7 @@ const SVGCard:React.FC<SVGType> = (props: SVGType) => {
             <h3>{title}</h3>
             <img src={`${image}`} width="100px" height="100px"></img>
             <a href={`${image}`} download={`${title}`}>
-                <button>download</button>
+                <Button text="download"/> 
             </a>
             <style jsx>
                 {`
@@ -22,7 +23,7 @@ const SVGCard:React.FC<SVGType> = (props: SVGType) => {
                     margin: 20px;
                     text-align: center;
                     transition: top ease 0.5s;
-                    background-color: palegoldenrod;
+                    background-color: wheat;
                 }
                 div.svg-body:hover {
                     box-shadow: 2px 2px 10px peachpuff, 4px 4px 10px pink;
@@ -38,6 +39,9 @@ const SVGCard:React.FC<SVGType> = (props: SVGType) => {
                 }
                 img {
                     margin: 10px;
+                }
+                a {
+                    text-decoration: none;
                 }
                 `}
             </style>
