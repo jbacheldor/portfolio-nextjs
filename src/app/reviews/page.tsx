@@ -55,14 +55,50 @@ const fakeData = [
     },
 ]
 
+
+type Review = {
+    name: string,
+    review: string,
+    date: string,
+    relation: string,
+    company: string,
+    rating?: number,
+}
+
+const initialReview: Review = {
+    name: "",
+    review: "",
+    date: '',
+    relation: '',
+    company: ''
+}
+
 const ReviewsPage:React.FC = () => {
-    const [data, setData] = useState([])
+    const [data, setData] = useState<Review[] | []>([])
     const [carosel, setCarosel] = useState(0)
+    const pathName = process.env.BASE_URL
+    const [errorMessage, setMsg] = useState('')
 
     useEffect(()=> {
         // on load get that data!!
         let carosel = (fakeData.length-1.5) * 250
         setCarosel(carosel)
+        async function getData () {
+            await fetch(`${pathName}/server/getdata`)
+            .then(async (data)=> {
+                if(data.status != 200){
+                    setMsg('error getting data ')
+                }
+                const res = await data.json()
+                console.log('res', res.data)
+                setData(res.data)
+            })
+            .catch((error) => {
+                setMsg('error:  ' + error )
+            })
+            
+        }
+        getData()
     }, [])
 
     return (
@@ -70,6 +106,9 @@ const ReviewsPage:React.FC = () => {
         <h1>
             from the vault:
         </h1>
+        {errorMessage &&
+            <div>{errorMessage}</div>
+        }
         <div id="filter">
             <span>filter reviews by relation:</span>
             <div id="buttons">
@@ -79,7 +118,12 @@ const ReviewsPage:React.FC = () => {
             </div>
         </div>
         <div id="reviews">
-        {fakeData.map((key, index)=> (
+        {data.length > 0 &&
+            data.map((key, index)=> (
+                <Review carosel={carosel} name={key.name} review={key.review} date={key.date} relation={key.relation} company={key.company}/>
+            ))
+        }
+        {data.length == 0 && fakeData.map((key, index)=> (
                 <Review carosel={carosel} name={key.name} review={key.review} date={key.date} relation={key.relation} company={key.company}/>
             ))
             }
