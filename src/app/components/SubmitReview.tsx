@@ -28,7 +28,6 @@ const SubmitReview:React.FC = () => {
     const stars = useRef<Array<HTMLDivElement | null>>([]);
 
     const updateState = (e:any) => {
-        
         setForm({
             ...form,
             [e.target.ariaLabel] : e.target.value
@@ -61,6 +60,14 @@ const SubmitReview:React.FC = () => {
     }
 
     const submitForm = async (e: any) => {
+
+        let today = new Date(Date.now()).toDateString()
+        console.log('today', today)
+        setForm({
+            ...form,
+            date: today
+        })
+
         e.preventDefault();
 
         await fetch(`${pathName}/server/submitdata`, 
@@ -69,7 +76,13 @@ const SubmitReview:React.FC = () => {
             }
         )
         .then(async (response)=> {
-            if(response.status == 200) setMsg('WAHOOOO success')
+            if(response.status == 200) {
+                setMsg('WAHOOOO success')
+                setForm(initialForm)
+                stars.current.forEach((item)=> {
+                    if(item) item.style.filter = ""
+                })
+            }
         })
         .catch((error) => {
             console.log('error', error)
@@ -87,19 +100,19 @@ const SubmitReview:React.FC = () => {
                 <h4>submit your own review!</h4>
                 <label>
                     <span>name</span>
-                    <input></input>
+                    <input aria-label="name" value={form.name} onChange={(e)=> updateState(e)}></input>
                 </label>
                 <label>
                     <span>review</span>
-                    <textarea/>
+                    <textarea aria-label="review" value={form.review} onChange={(e)=> updateState(e)}/>
                 </label>
                 <label>
                     <span>company</span>
-                    <input></input>
+                    <input aria-label="company"  value={form.company}  onChange={(e)=> updateState(e)}></input>
                 </label>
                 <label>
                     <span>relation</span>
-                    <input></input>
+                    <input aria-label="relation" value={form.relation}  onChange={(e)=> updateState(e)}></input>
                 </label>
                 <label id="stars">
                     <span>rating</span>

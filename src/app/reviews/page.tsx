@@ -98,7 +98,7 @@ const ReviewsPage:React.FC = () => {
             })
             
         }
-        getData()
+        if (!pathName?.includes("localhost")) getData()
     }, [])
 
     return (
