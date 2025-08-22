@@ -153,7 +153,7 @@ const ReviewsPage:React.FC = () => {
                 #reviews {
                     display: flex;
                     flex-direction: row;
-                    justify-content: center;
+                    justify-content: flex-end;
                 }
             }
             `}
