@@ -4,7 +4,7 @@ import styles from './navstyle.module.css'
 import { useEffect, useState } from 'react'
 
 const Navigation:React.FC = () => {
-    const links: string[] = ["about", "contact", "portfolio", "resume", "design", "reviews"]
+    const links: string[] = ["about", "resume", "portfolio", "design", "reviews"]
     const [active, setActive] = useState("")
 
     const redirectTo = (value: string) => {
@@ -55,20 +55,21 @@ const Navigation:React.FC = () => {
                     margin: 10px;
                     border-radius: 20px;
                     background-color: pink;
-                    box-shadow: 2px 2px 10px purple;
-                    color: white;
-                    text-shadow: 2px 2px 10px silver;
+                    box-shadow: 2px 2px 10px peachpuff;
+                    color: chocolate;
                     border: none;
                     transition: top ease 0.5s;
+                    font-weight: 600;
                 }
                 button#active {
-                    background-color: purple;
+                    background-color: darksalmon;
+                    color: white;
                 }
                 button:hover {
                     cursor: pointer;
                     position: relative;
                     top: -1px;
-                    box-shadow: 4px 4px 10px purple, 2px 2px 20px dodgerblue;
+                    box-shadow: 4px 4px 10px peru, 2px 2px 20px darksalmon;
                     }
 
             `}

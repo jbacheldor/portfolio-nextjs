@@ -1,73 +1,82 @@
 'use client'
 import { redirect } from 'next/navigation'
+import { useState } from 'react'
+import { ProjectCardsType } from '../types/Projects'
 
-
-type Props = {
-    link: string,
-    title: string,
-    description: string,
-    video?: string,
-    image?: string,
-    techStack?: string[]
+interface Props extends ProjectCardsType {
+    onClick: (value: string) => void
 }
 
 const ProjectCards:React.FC<Props> = (props: Props) => {
-    const {link, title, description} = props
-    const techStack = ["nextjs", "ts", "vercel"]
+    const {link, title, description, techStack, repolink, image, onClick} = props
 
-    const openProject = () => {
-        redirect(`/${link}`)
+    // const openProject = () => {
+    //     redirect(`/${link}`)
+    // }
+
+    const clickRegistered = () => {
+        onClick(title)
     }
 
     return (
-        <div className="project-body">
+        <div className="project-body" onClick={()=> clickRegistered()}>
             <h3 className="project-title">
                 {title}
             </h3>
             <div className='project-main' >
-
+                {image && <img src={image}/>}
             </div>
             <div className="techbuttons">
-                {techStack.map((i, key)=>{
+                {techStack?.map((i, key)=>{
                     return (
                         <div key={key} className='techButton'>{i}</div>
                     )
                 })}
             </div>
-            <div className='project-description'>
-                {description}
-            </div>
+            <div id="project-description" dangerouslySetInnerHTML={{__html: description}}/>
 
         <style jsx>
             {`
             div.project-body {
                 border: 1px black solid;
                 border-radius: 5px;
-                width: 300px;
+                width: 400px;
                 margin: 10px;
-                height: 300px;
-                background-color: pink;
+                height: 400px;
+                background-color: peachpuff;
             }
             .project-title {
                 text-align: center;
                 padding: 5px;
             }
             .project-main {
-                background-color: white;
+                text-align: center;
                 margin: 10px;
-                height: 150px;
+                height: 230px;
                 border-radius: 5px;
-                border: 1 solid black;
+            }
+            img {
+                width: inherit;
+                height: inherit;
+                max-height: 230px;
+                max-width: 380px;
+                overflow: hidden;
+                border-radius: 5px;
+                border: 1px solid black;
             }
             .project-main:hover {
                 cursor: pointer;
             }    
-            .project-description {
+            #project-description {
                 margin: 10px;
                 font-size: small;
                 text-overflow: ellipsis;
                 overflow: hidden;
-                max-height: 7ch;
+                height: 70px;
+                border: 1px solid black;
+                border-radius: 5px;
+                padding: 5px;
+                background-color: cornsilk;
             }
             .techbuttons {
                 display: flex;
@@ -77,13 +86,16 @@ const ProjectCards:React.FC<Props> = (props: Props) => {
             }
             .techButton {
                 border-radius: 20px;
-                color: white;
-                background-color: purple;
+                color: chocolate;
+                background-color: pink;
                 padding: 5px;
                 min-width: 60px;
                 text-align: center;
                 font-size: small;
                 font-weight: 600;
+            }
+            a {
+                text-decoration: underline;
             }
 
             `}
