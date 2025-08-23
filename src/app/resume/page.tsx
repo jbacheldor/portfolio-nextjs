@@ -4,10 +4,15 @@ import { redirect } from "next/navigation";
 import Button from "../components/Button";
 
 const Resume:React.FC = () => {
+
+
     return(
     <div id="portfolio-body">
     <h1>Portfolio</h1>
     <div id="bio">linkedin - extended</div>
+    <a id="download-btn" href={`/Jessica-Bacheldor-Resume.pdf`} download={`Jessica Bacheldor Resume.pdf`}>
+        <Button text="Download Resume"/>
+    </a>
     <hr/>
     <div id="buttons">
         <Button text="leadership"  onClick={()=> {redirect("#leadership")}}/> 
@@ -16,24 +21,60 @@ const Resume:React.FC = () => {
     </div>
 
     <div id="timeline">
-        <div className="section">
-            <h2>[Insert Resume Gap here!!!]</h2>
-            <h4>March 2025 - Present !</h4>
+        <div className="section intermission">
+            <h2>Career Intermission</h2>
+            <h3>October 2025 - Present !</h3>
             <p>this is the first time i've ever not held a job since 16 and potentially the last time i'll have this much free time for the forseeable future!!! so i really wanted to take the opportunity to travel and see Japan but also focus on improving my
                 skills and falling in love with coding again!! If you'd like to see the product of that journey, please check out my portfolio page :-2</p>
-            <h3>4 weeks solo backpacking through Japan!</h3>
-            <span>March 2025 - April 2025</span>
-            <h3>Coding & Trying new things!</h3>
-            <span>April 2025 - August 2025</span>
-            <p>i think a </p>
-            <h3>Ordained a few weddings</h3>
-            <span>August 2025-September 2025</span>
-        </div>
-
-        <div className="section">
-            <h2>Recurse</h2>
-            <span>January 2025 - March 2025</span>
-            <p>hot takes, conjugation app, &&&& chaotic blog</p>
+            <div className="event">
+                <div className="top-section">
+                    <h4>Masters Courses</h4>
+                    <span>October 2025 - December 2025</span>
+                </div>
+                <p>I took a semester to only focus on KBAI & DB courses to strengthen my knowledge</p>
+            </div>
+            <div className="event">
+                <div className="top-section">
+                <h4>Recurse Center</h4>
+                <span>January 2025 - March 2025</span>
+                </div>
+                <p>hot takes, conjugation app, &&&& chaotic blog</p>
+            </div>
+            <div className="event">
+                <div className="top-section">
+                <h4>Solo-travelled Japan</h4>
+                <span>March 2025 - April 2025</span>
+                </div>
+                <p>I spent some time romping around Japan by myself for four weeks, going to: Toyko, Kyoto, Osaka, Ehime, Nagasaki, Hiroshima, and Fukuoka. Most notable of my trip was doing the Shimanami Kaido which is a 60km bike trail over 6 small islands in the Seto Inland Sea!</p>
+            </div>
+            <div className="event">
+                <div className="top-section">
+                <h4>Coding Personal Projects</h4>
+                <span>April 2025-Present</span>
+                </div>
+                <p>Before applying for jobs I wanted to complete a couple of projects that have been sitting in the back of my mind and also focus on building new skillsets that I haven't had the opportunity to yet in job interviews. Most notable include: </p>
+                <ul>
+                    <li>
+                    Authentication and Authorization
+                    </li>
+                    <li>
+                    APIs and things like Abort Controller / cross-site scripting and best practices
+                    </li>
+                    <li>
+                    New frameworks like Next.JS
+                    </li>
+                    <li>
+                        optimization through client-side rendering and server-side rendering
+                    </li>
+                </ul>
+            </div>
+            <div className="event">
+                <div className="top-section">
+                <h4>Ordained a Few Weddings</h4>
+                <span>August 2025-September 2025</span>
+                </div>
+                <p>A couple of my friends have given me the highest honor of presiding over their marriage, so a lot of time and effort went into making sure their special day was amazing.</p>
+            </div>
         </div>
         <div className="section">
             <h2>General Electric</h2>
@@ -90,56 +131,112 @@ const Resume:React.FC = () => {
         <hr/>
     </div>
     <div id="leadership">
-        <h3>Leadership</h3>
-        <div className="section">
-            <h4>college</h4>
-            <h5>commencement speaker at graduation</h5>
-            <h5>amnesty international</h5>
-            <span>president, Student activist coordinator, on the website</span>
-            <span>Not Enough - Impact Report - 2018/2019</span>
-            <p>https://www.amnesty.org/en/latest/research/2019/11/the-not-enough-impact-report-201819/</p>
-            <span>lobbied in congress 2</span>
-            <span>lobbied in congress v1</span>
-            <span>cosponsored a refugee family</span>
-            <span>passed a compus wide resolution welcoming refugees</span>
-            <span>longer table event</span>
-            <span>numerous letter writing campaigns</span>
-            <span>gun violence panel - focused in detroit - number of local non-profits </span>
-            <span>immigration panel - aclu and aiusa </span>
-            <span>water event focused on water shut offs in detroit</span>
-            <h5>delta phi epsilon</h5>
-            <span>head of recruitment, guidance whatever they were called</span>
-            <h4>GE specific</h4>
-            <h5>grace hopper representation for dtlp</h5>
-            <span>answered questions for women looking to join stem initiatives</span>
-            <h5>10,000 coffees</h5>
-            <span>helped figure out what group to include in launch demographic </span>
-            <h5>affinity community</h5>
-            <span>ramadan, brazil, current events, etc - programming for all</span>
-            <h5>first ever panel for mytech representing women in stem </h5>
-            <span>covered dtlp angles</span>
-            <h5>onboarding</h5>
-            <span>ensured new dtlps had required gear, knowledge, and information pertaining to things such as the educational funds accessible to them </span>
-            <h5>that one ,,, for uhhh,,, what's it called,,, ?</h5>
-            <span> i have no clue what i was sayig here - i think communications for nonprofit situation</span>
-            <h5>that time i had a literal intern,,, or intern buddy</h5>
-            <span>???</span>
+        <h2>Leadership</h2>
+        <div className="section row">
+            <div className="group">
+                <h3>College</h3>
+                <div className="event">
+                     <h5>commencement speaker at graduation</h5>
+                     <span>December 2019</span>
+                     <p>I was selected to be commencement speaker at my college graduation - and choose to speak upon the power of the individual to drive change, through your "not enough" being "just enough" - to a crowd of 1,500+ people.</p>
+                </div>
+                <h5>amnesty international</h5>
+                <div className="event">
+                    <h5>Cosponsored Refugee Family</h5>
+                    <span>December 2019</span>
+                    <p>words here abt this!</p>
+                </div>
+                <div className="event">
+                    <h5>I Welcome Resolution</h5>
+                    <span>2017</span>
+                    <p>Drafted the first resolution that declares the student body of the University of Michigan - Dearborn welcomes refugees and immigrants on campus and assisted in gathering signage from current students.</p>
+                </div>
+                <div className="event">
+                    <h5>Longer Table Event</h5>
+                    <span>December 2019</span>
+                    <p>"WHEN INTIMIDATED BY THE STATE OF THE WORLD, SOME PEOPLE BUILD A TALLER WALL; WE'RE BUILDING A LONGER TABLE."</p>
+
+                </div>
+                <div className="event">
+                    <h5>Gun Violence Panel</h5>
+                    <span>April 2019</span>
+                    <p>Planned and hosted a panel on campus with a crowd of over 60+ people focused on addressing gun violence in the greater Detroit area. The event was moderated by the Midwest Regional Field Organizer for Amnesty International and panelists included individuals from March for Our Lives: Detroit, CeaseFire Detroit, FORCE Detroit, and a representative from the Wayne County Commissioner.</p>
+                </div>
+                <div className="event">
+                    <h5>Immigration Panel</h5>
+                    <span>2017???2018??</span>
+                    <p>Planned and hosted a panel featuring panelists from AIUSA office and ACLU. </p>
+                </div>
+            </div>
+            <div className="group">
+                <h3>Professional</h3>
+                <h4>General Electric</h4>
+                <h5>grace hopper representation for dtlp</h5>
+                <span>answered questions for women looking to join stem initiatives</span>
+                <h5>10,000 coffees</h5>
+                <span>helped figure out what group to include in launch demographic </span>
+                <h5>affinity community</h5>
+                <span>ramadan, brazil, current events, etc - programming for all</span>
+                <h5>first ever panel for mytech representing women in stem </h5>
+                <span>covered dtlp angles</span>
+                <h5>onboarding</h5>
+                <span>ensured new dtlps had required gear, knowledge, and information pertaining to things such as the educational funds accessible to them </span>
+
+                <h4>Amnesty International</h4>
+                <div className="event">
+                    <div><h5>Not Enough - Impact Report </h5><span>2018/19</span></div>
+                    
+                    <p>I was selected to be featured in the 2018/2019 Impact Report for Amnesty International for the world I led focusing on immigrant rights and awareness in the Metro-Detroit area.</p>
+                    <p><a href="https://www.amnesty.org/en/latest/research/2019/11/the-not-enough-impact-report-201819/" target="_blank">Report Link</a></p>
+                </div>
+                <div className="event">
+                    <h5>Lobbied in Congress - December 2019</h5>
+                    <p>I lobbied in 2019 for the following bills: <a href="https://www.congress.gov/bill/116th-congress/senate-bill/398" target="_blank">S. 398</a> & <a href="https://www.congress.gov/bill/116th-congress/senate-bill/42" target="_blank">S. 42</a>: Universal Background Checks & Arm Sales to Saudi Arabia, respectively, with a delegation of other Michiganders through Amnesty International. 
+                    </p>
+                </div>
+                <div className="event">
+                    <h5>Lobbied in Congress - Part 2</h5>
+                    <span>December 2023</span>
+                    <p>I lobbied in 2019 for th :2023 Safeguard Act : (<a href="https://www.congress.gov/bill/118th-congress/senate-bill/1025" target="_blank">S. 1025</a> / <a href="https://congress.gov/bill/118th-congress/house-bill/1801" target="_blank">HR 1801</a>) with a delegation of other Michiganders through Amnesty International. </p>
+                </div>
+            </div>
         </div>
     </div>
-        <div id="education">
+    <div id="">
+        <h3>Certificates</h3>
+        <div className="section row">
+            <div className="ed-entry">
+                <h4>Azure Fundamentals</h4>
+                <span>Dec. 2023</span>
+            </div>
+            <div className="ed-entry">
+                <h4>Teaching English as a Foreign Language (TEFL) </h4>
+                <span>October 2021</span>
+            </div>
+            <div className="ed-entry">
+                <h4>Minister through Universal Life Church</h4>
+                <span>September 2023</span>
+            </div>
+        </div>
+    </div>
+    <div id="education">
         <h3>Education</h3>
-        <div className="section">
-            <h4>undergrad</h4>
-            <span>2014-2019</span>
-            <span>University of Michigan - Dearborn</span>
-            <span>B.A. in English and B.S. in Computer Science</span>
-            <h4>masters</h4>
-            <span>2024-present</span>
-            <span>Georgia Tech</span>
-            <span>Online Masters in Computer Science</span>
-            <p></p>
+        <div className="section row">
+            <div className="ed-entry">
+                <h4>undergrad</h4>
+                <span>2014-2019</span>
+                <span>University of Michigan - Dearborn</span>
+                <span>B.A. in English and B.S. in Computer Science</span>
+            </div>
+            <div className="ed-entry">
+                <h4>masters</h4>
+                <span>2024-present</span>
+                <span>Georgia Tech</span>
+                <span>Online Masters in Computer Science</span>
+            </div>
         </div>
     </div>
+
     <style jsx>
         {`
         h1 {
@@ -152,16 +249,58 @@ const Resume:React.FC = () => {
         div#bio {
             text-align: center;
         }
+        .group {
+            margin: 10px;
+            max-width: 50%;
+        }
+        .event {
+            width: 100%;
+        }
         #timeline, .section {
             display: flex;
             flex-direction: column;
             margin: 10px;
             align-items: center;
         }
+        .top-section {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        .top-section h4, span {
+            background-color: cornsilk;
+            padding: 4px;
+            margin: 5px;
+            border: 1px solid black;
+            border-radius: 10px;
+            text-align: center;
+        }
         .section {
             margin: 10px;
             border: 1px solid black;
             background-color: peachpuff;
+            padding: 10px;
+        }
+        .intermission li {
+            margin: 0 40px;
+        }
+        a#download-btn {
+            display: flex;
+            justify-content: center;
+            text-decoration: none;
+        }
+        a {
+            // text-decoration: none;
+        }
+        .row {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+        .ed-entry {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
         }
         `}
     </style>
