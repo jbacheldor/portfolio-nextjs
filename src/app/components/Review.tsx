@@ -27,7 +27,7 @@ const Review:React.FC<Props> = ({carosel, name, review, date, relation, company,
             <style jsx>
                 {`
                 .reviewbody {
-                    background-color: pink;
+                    background-color: peachpuff;
                     border-radius: 20px;
                     height: 100%;
                     min-width: 250px;

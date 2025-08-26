@@ -117,7 +117,7 @@ const SubmitReview:React.FC = () => {
                 </label>
                 <label id="stars">
                     <span>rating</span>
-                    <div>
+                    <div className="star-img">
                     {Array.from({length: 5}).map((item, index)=> (
                         <Image alt={`${index}-star`}  key={`${index}-star`} ref={el => {stars.current[index] = el}}  onClick={(e)=>changeRating(e)} aria-label={`${index}`} src={"/md-star.svg"} height="30" width="30"/>
                     ))}
@@ -173,7 +173,7 @@ const SubmitReview:React.FC = () => {
                     text-align: center;
                     width: 100%;
                 }
-                img:hover {
+                .star-img:hover {
                     cursor: pointer;
                 }
                 
