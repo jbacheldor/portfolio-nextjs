@@ -23,24 +23,16 @@ const DesignPage:React.FC = () => {
             <style jsx>
                 {`
                 h2 {
-                    margin: 10px;
-                }
-                hr {
-                    width: 80%;
                     margin: 5px;
-                    height: 5px;
-                    border-radius: 5px;
-                    background-color: peachpuff;
-                    border: none;
                 }
                 div#design-body {
                     display: flex;
                     flex-direction: column;
-                    margin: 0 80px;
                     align-items: center;
                 }
                 .svgs {
                     display: flex;
+                    margin: 0 80px;
                     flex-direction: row;
                     flex-wrap: wrap;
                     align-items: center;

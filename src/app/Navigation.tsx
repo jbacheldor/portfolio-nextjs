@@ -4,7 +4,7 @@ import styles from './navstyle.module.css'
 import { useEffect, useState } from 'react'
 
 const Navigation:React.FC = () => {
-    const links: string[] = ["about", "resume", "portfolio", "design", "reviews"]
+    const links: string[] = ["resume", "portfolio", "design", "reviews"]
     const [active, setActive] = useState("")
 
     const redirectTo = (value: string) => {
@@ -23,13 +23,14 @@ const Navigation:React.FC = () => {
 
     const changeContent = (e: string) => {
         setActive(e)
+        if(e == "about") redirect(`/`)
         redirect(`/${e}`)
     }
 
     return (
         <>
         <div id="header"  className={styles.header}>
-            <span><h1 onClick={() => redirect("/about")}>Jess Bacheldor</h1>
+            <span><h1 onClick={() => redirect("/")}>Jess Bacheldor</h1>
              <h4>(she/her)</h4></span>
              <span className={styles.rightside}>
             <div >
@@ -40,6 +41,7 @@ const Navigation:React.FC = () => {
         </span>
         </div>
         <div id="navigation" className={styles.navigation}>
+            <button id={"about" == active ? "active" : ""} onClick={()=> changeContent("about")} >{"about"}</button>
             {links.map((i, key)=> {
                 return (
                     <button id={i == active ? "active" : ""} onClick={()=> changeContent(i)} key={`${key}-button`}>{i}</button>
@@ -71,6 +73,9 @@ const Navigation:React.FC = () => {
                     top: -1px;
                     box-shadow: 4px 4px 10px peru, 2px 2px 20px darksalmon;
                     }
+                h1:hover {
+                    cursor: pointer;
+                }
 
             `}
         </style>

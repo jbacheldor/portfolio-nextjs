@@ -55,14 +55,6 @@ const PortfolioPage = () => {
                 text-align: center;
                 margin: 5px;
             }
-            hr {
-                width: 80%;
-                margin: 5px;
-                height: 5px;
-                border-radius: 5px;
-                background-color: peachpuff;
-                border: none;
-            }
             #project-body {
                 display: flex;
                 align-items: center;

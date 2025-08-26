@@ -103,9 +103,9 @@ const ReviewsPage:React.FC = () => {
 
     return (
         <>
-        <h1>
-            from the vault:
-        </h1>
+        <h2>
+            From the Vault:
+        </h2>
         {errorMessage &&
             <div>{errorMessage}</div>
         }
@@ -138,8 +138,9 @@ const ReviewsPage:React.FC = () => {
                 hr {
                     margin: 10px 0;
                 }
-                h1 {
+                h2 {
                     text-align: center;
+                    margin: 5px;
                 }
                 buttons {
                     display: flex;

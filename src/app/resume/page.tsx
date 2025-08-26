@@ -134,7 +134,6 @@ const Resume:React.FC = () => {
                 <p className="highlight">Coordinated the decommission and data archival and retention of 82 legacy applications and 137 diff erent assets between six diff erent teams, saving the company $1 million in cost avoidance and $370k annually.</p>
             </div>
         </div>
-        <hr/>
     </div>
     <div id="leadership">
         <h2>Leadership</h2>
