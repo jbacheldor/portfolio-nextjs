@@ -2,58 +2,7 @@
 import { useEffect, useState } from "react";
 import Review from "../components/Review";
 import SubmitReview from "../components/SubmitReview";
-
-const fakeData = [
-    {   name: "Joe",
-        review: "jess is soo stellar and cool",
-        date: 'today',
-        relation: 'manager',
-        company: 'ge'
-    },
-    {   name: "Daniel",
-        review: "jess is soo stellar and cool",
-        date: 'today',
-        relation: 'coworker',
-        company: 'ge'
-    },
-    {   name: "Derartu",
-        review: "jess is soo stellar and cool",
-        date: 'today',
-        relation: 'coworker',
-        company: 'ge'
-    },
-    {   name: "Sam",
-        review: "jess is soo stellar and cool",
-        date: 'today',
-        relation: 'coworker',
-        company: 'ge'
-    },
-    {   name: "Dave",
-        review: "jess is soo stellar and cool",
-        date: 'today',
-        relation: 'coworker',
-        company: 'ge'
-    },
-    {   name: "xx",
-        review: "jess is soo stellar and cool",
-        date: 'today',
-        relation: 'coworker',
-        company: 'ge'
-    },
-        {   name: "one",
-        review: "jess is soo stellar and cool",
-        date: 'today',
-        relation: 'coworker',
-        company: 'ge'
-    },
-    {   name: "two",
-        review: "jess is soo stellar and cool",
-        date: 'today',
-        relation: 'coworker',
-        company: 'ge'
-    },
-]
-
+import { fakeData } from "../data/localData";
 
 type Review = {
     name: string,
@@ -79,7 +28,6 @@ const ReviewsPage:React.FC = () => {
     const [errorMessage, setMsg] = useState('')
 
     useEffect(()=> {
-        // on load get that data!!
         const carosel = (fakeData.length-1.5) * 250
         setCarosel(carosel)
         async function getData () {
@@ -122,7 +70,7 @@ const ReviewsPage:React.FC = () => {
                 <Review key={index}carosel={carosel} name={key.name} review={key.review} date={key.date} relation={key.relation} company={key.company}/>
             ))
         }
-        {data.length == 0 && fakeData.map((key, index)=> (
+        {pathName?.includes("localhost") && fakeData.map((key, index)=> (
                 <Review key={index} carosel={carosel} name={key.name} review={key.review} date={key.date} relation={key.relation} company={key.company}/>
             ))
             }

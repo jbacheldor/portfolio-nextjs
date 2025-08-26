@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import Button from "./Button"
 import Image from "next/image"
+import { sanitize } from "../utils"
 
 type formType = {
     name: string,
@@ -31,7 +32,7 @@ const SubmitReview:React.FC = () => {
     const updateState = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
         setForm({
             ...form,
-            [e.target.ariaLabel as string] : e.target.value
+            [e.target.ariaLabel as string] : sanitize(e.target.value)
         })
     }
 
