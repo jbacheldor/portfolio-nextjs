@@ -133,102 +133,91 @@ const Resume:React.FC = () => {
                 </div>
                 <p className="highlight">Coordinated the decommission and data archival and retention of 82 legacy applications and 137 diff erent assets between six diff erent teams, saving the company $1 million in cost avoidance and $370k annually.</p>
             </div>
-
-            <h3>Internship - Technical Project Manager</h3>
-            <span>September 2019 - August 2022</span>
-            <p className="highlight">
-                During this time I focused on working with a 6-person team to build an internal website alternative to smartsheet utilizing a tech stack of Predix, JS, and Java for our shop floor workers in order to better manage fulfillment for our aerospace engines.
-            </p>
-            <h3>Internship - Front-End Developer</h3>
-            <span>May 2019 - August 2019</span>
-            <p className="highlight">
-                During this time I focused on working with a 6-person team to build an internal website alternative to smartsheet utilizing a tech stack of Predix, JS, and Java for our shop floor workers in order to better manage fulfillment for our aerospace engines.
-            </p>
         </div>
         <hr/>
     </div>
     <div id="leadership">
-        <h3>Leadership</h3>
+        <h2>Leadership</h2>
         <div className="section row">
             <div className="group">
                 <h3>College</h3>
                 <div className="event">
-                     <h5>commencement speaker at graduation</h5>
-                     <span>December 2019</span>
+                    <div className="top-section">
+                        <h4>Commencement Speaker</h4>
+                        <span>2019</span>
+                        </div>
                      <p className="highlight">I was selected to be commencement speaker at my college graduation - and choose to speak upon the power of the individual to drive change, through your "not enough" being "just enough" - to a crowd of 1,500+ people.</p>
                 </div>
-                <h5>amnesty international</h5>
                 <div className="event">
-                    <h5>Cosponsored Refugee Family</h5>
-                    <span>December 2019</span>
-                    <p className="highlight">words here abt this!</p>
+                    <div className="top-section">
+                    <h4>Cosponsored Refugee Family</h4>
+                    <span>2019</span>
+                    </div>
+                    <p className="highlight">Organized a diverse group of 10 volunteers to help raise money and help resettle a refugee family into the Metro-Detroit area, including raising $1000+, assisting with documentation, and coordinating appointment pick-ups and drop-offs. </p>
                 </div>
                 <div className="event">
-                    <h5>I Welcome Resolution</h5>
-                    <span>2017</span>
+                    <div className="top-section">
+                    <h4>I Welcome Resolution</h4>
+                    <span>2019</span>
+                    </div>
                     <p className="highlight">Drafted the first resolution that declares the student body of the University of Michigan - Dearborn welcomes refugees and immigrants on campus and assisted in gathering signage from current students.</p>
                 </div>
                 <div className="event">
-                    <h5>Longer Table Event</h5>
-                    <span>December 2019</span>
-                    <p className="highlight">"WHEN INTIMIDATED BY THE STATE OF THE WORLD, SOME PEOPLE BUILD A TALLER WALL; WE'RE BUILDING A LONGER TABLE."</p>
+                    <div className="top-section">
+                    <h4>Longer Table Event</h4>
+                    <span>2019</span>
+                    </div>
+                    <p className="highlight">
+                        <p>Organized a community potluck between two different universities and multiple local groups in order to foster diversity, inclusion, and conversation with a headcount of over 40 people.</p>
+                        <p>"When intimidated by the state of the world, some people build a taller wall; we’re building a longer table” - Amnesty International</p>
+                    </p>
 
                 </div>
                 <div className="event">
-                    <h5>Gun Violence Panel</h5>
-                    <span>April 2019</span>
+                    <div className="top-section">
+                    <h4>Gun Violence Panel</h4>
+                    <span>2019</span>
+                    </div>
                     <p className="highlight">Planned and hosted a panel on campus with a crowd of over 60+ people focused on addressing gun violence in the greater Detroit area. The event was moderated by the Midwest Regional Field Organizer for Amnesty International and panelists included individuals from March for Our Lives: Detroit, CeaseFire Detroit, FORCE Detroit, and a representative from the Wayne County Commissioner.</p>
-                </div>
-                <div className="event">
-                    <h5>Immigration Panel</h5>
-                    <span>2017???2018??</span>
-                    <p className="highlight">Planned and hosted a panel featuring panelists from AIUSA office and ACLU. </p>
                 </div>
             </div>
             <div className="group">
-                <h3>Professional</h3>
-                <h4>General Electric</h4>
+                <h3>General Electric</h3>
                 <div className="event">
-                    <h5>grace hopper representation for dtlp</h5>
-                    <span>2017???2018??</span>
-                    <p className="highlight">answered questions for women looking to join stem initiatives</p>
-                </div>
-                <div className="event">
-                    <h5>10,000 coffees</h5>
-                    <span>2017???2018??</span>
-                    <p className="highlight">helped figure out what group to include in launch demographic </p>
-                </div>
-                <div className="event">
-                    <h5>Affinity Groups</h5>
-                    <span>2017???2018??</span>
-                    <p className="highlight">on boarding & ??? the other one??  ramadan, brazil, current events, etc - programming for all - ensured new dtlps had required gear, knowledge, and information pertaining to things such as the educational funds accessible to them </p>
-                </div>
-                <div className="event">
-                    <h5>Panels</h5>
-                    <span>2017???2018??</span>
-                    <p className="highlight">grace hopper& my tech - first ever panel for mytech representing women in stem </p>
+                    <div className="top-section">
+                    <h4>10,000 coffees</h4>
+                    <span>2022</span>
+                    </div>
+                    <p className="highlight">Assisted in determining demographics for 200,000 wide pilot of  <a href="https://www.tenthousandcoffees.com/" target="_blank">10,000 coffees</a>as a core member of the launch team by analyzing demographic breakdown of employees and their hierarchical roles. </p>
                 </div>
 
-                <h4>Amnesty International</h4>
+                <h3>Amnesty International</h3>
                 <div className="event">
-                    <div><h5>Not Enough - Impact Report </h5><span>2018/19</span></div>
+                    <div className="top-section">
+                    <h4>Not Enough - Impact Report </h4><span>2018/19</span>
+                    </div>
                     <p className="highlight">I was selected to be featured in the <a href="https://www.amnesty.org/en/latest/research/2019/11/the-not-enough-impact-report-201819/" target="_blank">2018/2019 Impact Report</a> for Amnesty International for the world I led focusing on immigrant rights and awareness in the Metro-Detroit area.</p>
                 </div>
                 <div className="event">
-                    <h5>Lobbied in Congress - December 2019</h5>
-                    <p className="highlight">I lobbied in 2019 for the following bills: <a href="https://www.congress.gov/bill/116th-congress/senate-bill/398" target="_blank">S. 398</a> & <a href="https://www.congress.gov/bill/116th-congress/senate-bill/42" target="_blank">S. 42</a>: Universal Background Checks & Arm Sales to Saudi Arabia, respectively, with a delegation of other Michiganders through Amnesty International. 
+                    <div className="top-section">
+                    <h4>Lobbied in Congress</h4>
+                    <span> 2019</span>
+                    </div>
+                    <p className="highlight">I lobbied in 2019 for the following bills: <a href="https://www.congress.gov/bill/116th-congress/senate-bill/398" target="_blank">S. 398</a> & <a href="https://www.congress.gov/bill/116th-congress/senate-bill/42" target="_blank">S. 42</a>: Universal Background Checks & Arm Sales to Saudi Arabia, respectively, with a delegation of other Michiganders.
                     </p>
                 </div>
                 <div className="event">
-                    <h5>Lobbied in Congress - Part 2</h5>
-                    <span>December 2023</span>
-                    <p className="highlight">I lobbied in 2019 for th :2023 Safeguard Act : (<a href="https://www.congress.gov/bill/118th-congress/senate-bill/1025" target="_blank">S. 1025</a> / <a href="https://congress.gov/bill/118th-congress/house-bill/1801" target="_blank">HR 1801</a>) with a delegation of other Michiganders through Amnesty International. </p>
+                    <div className="top-section">
+                    <h4>Lobbied in Congress</h4>
+                    <span>2023</span>
+                    </div>
+                    <p className="highlight">I lobbied in 2019 for the 2023 Safeguard Act: (<a href="https://www.congress.gov/bill/118th-congress/senate-bill/1025" target="_blank">S. 1025</a> / <a href="https://congress.gov/bill/118th-congress/house-bill/1801" target="_blank">HR 1801</a>) with a delegation of other Michiganders.</p>
                 </div>
             </div>
         </div>
     </div>
     <div id="">
-        <h3>Certificates</h3>
+        <h2>Certificates</h2>
         <div className="section row">
             <div className="ed-entry">
                 <h4>Azure Fundamentals</h4>
@@ -245,7 +234,7 @@ const Resume:React.FC = () => {
         </div>
     </div>
     <div id="education">
-        <h3>Education</h3>
+        <h2>Education</h2>
         <div className="section row">
             <div className="ed-entry highlight">
                 <h4>Undergraduate</h4>
@@ -267,7 +256,7 @@ const Resume:React.FC = () => {
         h1 {
             text-align: center;
         }
-        h3 {
+        h2 {
             margin: 0 10px;
         }
         #buttons {
@@ -290,7 +279,7 @@ const Resume:React.FC = () => {
             margin: 10px;
             align-items: center;
         }
-        p > ul {
+        p > ul{
             display: flex;
             align-items: flex-start;
             flex-direction: column;
@@ -316,6 +305,7 @@ const Resume:React.FC = () => {
         }
         li {
             margin: 0 40px;
+            text-align: left;
         }
         a#download-btn {
             display: flex;
@@ -329,6 +319,7 @@ const Resume:React.FC = () => {
             display: flex;
             flex-direction: row;
             justify-content: space-around;
+            align-items: flex-start;
         }
         .ed-entry {
             display: flex;
