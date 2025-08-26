@@ -28,7 +28,10 @@ const PortfolioPage = () => {
     }
 
     return (
-        <div id="projects">
+        <div id="project-body">
+            <h2>my discography</h2>
+            <hr/>
+            <div id="projects">
             {projectsData.map((i, key)=> {
                 return  <ProjectCards {...i} onClick={(value: string) => openWindow(value)}/>
                 
@@ -36,6 +39,7 @@ const PortfolioPage = () => {
             {openProject.title != '' &&
                 <ProjectPopup {...openProject} onClose={() => closeWindow()}/>
             }
+            </div>
         <style jsx>
             {`
             div#projects {
@@ -46,6 +50,23 @@ const PortfolioPage = () => {
                 justify-content: center;
                 width: 100%;
                 position: relative;
+            }
+            h2 {
+                text-align: center;
+                margin: 5px;
+            }
+            hr {
+                width: 80%;
+                margin: 5px;
+                height: 5px;
+                border-radius: 5px;
+                background-color: peachpuff;
+                border: none;
+            }
+            #project-body {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
             }
 
             `}

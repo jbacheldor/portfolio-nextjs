@@ -109,14 +109,14 @@ const ReviewsPage:React.FC = () => {
         {errorMessage &&
             <div>{errorMessage}</div>
         }
-        <div id="filter">
+        {/* <div id="filter">
             <span>filter reviews by relation:</span>
             <div id="buttons">
                 <Button text="family" onClick={()=> console.log()}/>
                 <Button text="coworkers" onClick={()=> console.log()}/>
                 <Button text="friends" onClick={()=>console.log()}/>
             </div>
-        </div>
+        </div> */}
         <div id="reviews">
         {data.length > 0 &&
             data.map((key, index)=> (
