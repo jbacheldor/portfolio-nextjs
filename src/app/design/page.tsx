@@ -5,9 +5,9 @@ import { svgData } from "../data/svgs"
 const DesignPage:React.FC = () => {
     return (
         <div id="design-body">
-            <h2>Design !</h2>
-            <hr/>
-            <h3>SVG Icons</h3>
+            {/* <h2>Design !</h2>
+            <hr/> */}
+            <h2>SVG Icons</h2>
             <hr/>
             {/* <div>
                 <button>utility</button>

@@ -62,6 +62,21 @@ const ProjectPopup:React.FC<Props> = (props: Props) => {
                 display: flex;
                 justify-content: space-around;
             }
+            button {
+                padding: 5px;
+                border-radius: 20px;
+                background-color: pink;
+                color: chocolate;
+                border: none;
+                transition: top ease 0.5s;
+                font-weight: 600;
+            }
+            button:hover {
+                cursor: pointer;
+                position: relative;
+                top: -1px;
+                box-shadow: 4px 4px 10px peru, 2px 2px 20px darksalmon;
+                }
             #tech-stack {
                 display: flex;
                 justify-content: space-around;
