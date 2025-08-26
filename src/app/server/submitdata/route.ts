@@ -22,7 +22,7 @@ export async function POST(request: NextRequest){
             )
         })
 
-        let data = await res.json()
+        const data = await res.json()
         return NextResponse.json({
             data: data.data,
             status: res.status

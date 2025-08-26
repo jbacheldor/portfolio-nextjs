@@ -2,9 +2,10 @@
 import { redirect } from 'next/navigation'
 import styles from './navstyle.module.css'
 import { useEffect, useState } from 'react'
+import Image from "next/image";
 
 const Navigation:React.FC = () => {
-    const links: string[] = ["about", "resume", "portfolio", "design", "reviews"]
+    const links: string[] = ["resume", "portfolio", "design", "reviews"]
     const [active, setActive] = useState("")
 
     const redirectTo = (value: string) => {
@@ -23,23 +24,27 @@ const Navigation:React.FC = () => {
 
     const changeContent = (e: string) => {
         setActive(e)
+        if(e == "about") redirect(`/`)
         redirect(`/${e}`)
     }
 
     return (
         <>
         <div id="header"  className={styles.header}>
-            <span><h1 onClick={() => redirect("/about")}>Jess Bacheldor</h1>
+            <span><h1 onClick={() => redirect("/")}>Jess Bacheldor</h1>
              <h4>(she/her)</h4></span>
              <span className={styles.rightside}>
-            <div >
-                <img onClick={() => redirectTo("linkedin")} alt="linkedin" className={styles.links} src={"/inBug-Black.png"} width="20px" height="20px"/>
-                <img onClick={() => redirectTo("github")} alt="github" className={styles.links} src={"/github-mark.svg"} width="20px" height="20px"/>
+            <div>
+                <Image onClick={() => redirectTo("linkedin")}  className={styles.links} alt="linkedin" src={"/inBug-Black.png"} width={20} height={20} />
+                <Image onClick={() => redirectTo("github")} className={styles.links} alt="github" src={"/github-mark.svg"} width={20} height={20} />
+                {/* <img onClick={() => redirectTo("linkedin")} alt="linkedin" className={styles.links} src={"/inBug-Black.png"} width="20px" height="20px"/>
+                <img onClick={() => redirectTo("github")} alt="github" className={styles.links} src={"/github-mark.svg"} width="20px" height="20px"/> */}
             </div>
             <a href="mailto: jessica.bacheldor@gmail.com">jessica.bacheldor@gmail.com</a>
         </span>
         </div>
         <div id="navigation" className={styles.navigation}>
+            <button id={"about" == active ? "active" : ""} onClick={()=> changeContent("about")} >{"about"}</button>
             {links.map((i, key)=> {
                 return (
                     <button id={i == active ? "active" : ""} onClick={()=> changeContent(i)} key={`${key}-button`}>{i}</button>
@@ -71,6 +76,9 @@ const Navigation:React.FC = () => {
                     top: -1px;
                     box-shadow: 4px 4px 10px peru, 2px 2px 20px darksalmon;
                     }
+                h1:hover {
+                    cursor: pointer;
+                }
 
             `}
         </style>

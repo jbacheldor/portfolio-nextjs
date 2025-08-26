@@ -43,3 +43,12 @@ a {
     color-scheme: dark;
   }
 }
+
+hr {
+    width: 100%;
+    margin: 5px;
+    height: 5px;
+    border-radius: 5px;
+    background-color: peachpuff;
+    border: none;
+}

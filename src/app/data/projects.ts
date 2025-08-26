@@ -37,22 +37,22 @@ export const projectsData: ProjectCardsType[] = [
         image: '/websites/howsmydriving.png',
         techStack: ['nextjs', 'ts', 'vercel', 'supabase'],
     },
-    {
-        title: 'crush tracker!!! in progress',
-        link: '',
-        repolink: '',
-        description: 'website designed to allow my close friends and peers',
-        video: '',
-        image: '',
-        techStack: ['nextjs', 'ts', 'vercel', 'firebase'],
-    },
-    {
-        title: 'stranger danger - in progress',
-        link: 'https://strangerdanger.vercel.app/',
-        repolink: 'https://github.com/jbacheldor/strangerdanger',
-        description: 'A social experiment designed to gather reviews about my personal interactions with individuals - all for funzies. Inspired by <a target="_blank" href="https://mayaontheinter.net/">Maya Man`s</a> <a target="_blank" href="https://pureinformation.stream/">Pure Information</a>',
-        video: '',
-        image: '',
-        techStack: ['nextjs', 'ts', 'vercel', 'turso'],
-    }
+    // {
+    //     title: 'crush tracker!!! in progress',
+    //     link: '',
+    //     repolink: '',
+    //     description: 'website designed to allow my close friends and peers',
+    //     video: '',
+    //     image: '',
+    //     techStack: ['nextjs', 'ts', 'vercel', 'firebase'],
+    // },
+    // {
+    //     title: 'stranger danger - in progress',
+    //     link: 'https://strangerdanger.vercel.app/',
+    //     repolink: 'https://github.com/jbacheldor/strangerdanger',
+    //     description: 'A social experiment designed to gather reviews about my personal interactions with individuals - all for funzies. Inspired by <a target="_blank" href="https://mayaontheinter.net/">Maya Man`s</a> <a target="_blank" href="https://pureinformation.stream/">Pure Information</a>',
+    //     video: '',
+    //     image: '',
+    //     techStack: ['nextjs', 'ts', 'vercel', 'turso'],
+    // }
 ]

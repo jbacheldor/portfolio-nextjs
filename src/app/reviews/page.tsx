@@ -1,6 +1,5 @@
 'use client'
 import { useEffect, useState } from "react";
-import Button from "../components/Button";
 import Review from "../components/Review";
 import SubmitReview from "../components/SubmitReview";
 
@@ -65,13 +64,13 @@ type Review = {
     rating?: number,
 }
 
-const initialReview: Review = {
-    name: "",
-    review: "",
-    date: '',
-    relation: '',
-    company: ''
-}
+// const initialReview: Review = {
+//     name: "",
+//     review: "",
+//     date: '',
+//     relation: '',
+//     company: ''
+// }
 
 const ReviewsPage:React.FC = () => {
     const [data, setData] = useState<Review[] | []>([])
@@ -81,7 +80,7 @@ const ReviewsPage:React.FC = () => {
 
     useEffect(()=> {
         // on load get that data!!
-        let carosel = (fakeData.length-1.5) * 250
+        const carosel = (fakeData.length-1.5) * 250
         setCarosel(carosel)
         async function getData () {
             await fetch(`${pathName}/server/getdata`)
@@ -99,13 +98,13 @@ const ReviewsPage:React.FC = () => {
             
         }
         if (!pathName?.includes("localhost")) getData()
-    }, [])
+    }, [pathName])
 
     return (
         <>
-        <h1>
-            from the vault:
-        </h1>
+        <h2>
+            From the Vault:
+        </h2>
         {errorMessage &&
             <div>{errorMessage}</div>
         }
@@ -120,11 +119,11 @@ const ReviewsPage:React.FC = () => {
         <div id="reviews">
         {data.length > 0 &&
             data.map((key, index)=> (
-                <Review carosel={carosel} name={key.name} review={key.review} date={key.date} relation={key.relation} company={key.company}/>
+                <Review key={index}carosel={carosel} name={key.name} review={key.review} date={key.date} relation={key.relation} company={key.company}/>
             ))
         }
         {data.length == 0 && fakeData.map((key, index)=> (
-                <Review carosel={carosel} name={key.name} review={key.review} date={key.date} relation={key.relation} company={key.company}/>
+                <Review key={index} carosel={carosel} name={key.name} review={key.review} date={key.date} relation={key.relation} company={key.company}/>
             ))
             }
         </div>
@@ -138,8 +137,9 @@ const ReviewsPage:React.FC = () => {
                 hr {
                     margin: 10px 0;
                 }
-                h1 {
+                h2 {
                     text-align: center;
+                    margin: 5px;
                 }
                 buttons {
                     display: flex;
