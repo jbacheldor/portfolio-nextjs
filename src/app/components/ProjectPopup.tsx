@@ -1,8 +1,6 @@
-'use client'
-
-import { Html } from "next/document";
 import { ProjectCardsType } from "../types/Projects";
 import Button from "./Button";
+import styles from './components.module.css'
 
 interface Props extends ProjectCardsType {
     onClose: () => void
@@ -20,84 +18,24 @@ const ProjectPopup:React.FC<Props> = (props: Props) => {
     }
 
     return (
-        <div className="popup-window">
-            <div id="project-banner">
+        <div className={styles.popupwindow}>
+            <div className={styles.projectbanner}>
                 <h4>{title}</h4>
-                <button onClick={() => closeWindow()}>x</button>
+                <button className={styles.closebutton} onClick={() => closeWindow()}>x</button>
             </div>
-            <div id="project-img">
+            <div className={styles.popimg}>
                 <img src={`${image}`} width="60%" height="60%"/>
             </div>
-            <div id="tech-stack">
+            <div className={styles.techstack}>
                 {techStack?.map((key, index)=> (
-                    <Button text={key} />
+                    <div key={index} className={styles.techButton}>{key}</div>
                 ))}
             </div>
-            <div id="description" dangerouslySetInnerHTML={{__html: description}}/>
-            <div id="buttons">
+            <div className={styles.description} dangerouslySetInnerHTML={{__html: description}}/>
+            <div className={styles.buttons}>
                 <Button text="codebase" onClick={()=>openLink(repolink)}/>
                 <Button text="website" onClick={()=>openLink(link)}/>
             </div>
-
-
-        <style jsx>
-            {`
-            div.popup-window {
-                position: absolute;
-                // height: 500px;
-                width: 500px;
-                background-color: peachpuff;
-                border: 1px solid black;
-            }
-            #project-img {
-                text-align: center;
-            }
-            #project-banner {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                margin: 10px;
-            }
-            #buttons {
-                display: flex;
-                justify-content: space-around;
-            }
-            button {
-                padding: 5px;
-                border-radius: 20px;
-                background-color: pink;
-                color: chocolate;
-                border: none;
-                transition: top ease 0.5s;
-                font-weight: 600;
-            }
-            button:hover {
-                cursor: pointer;
-                position: relative;
-                top: -1px;
-                box-shadow: 4px 4px 10px peru, 2px 2px 20px darksalmon;
-                }
-            #tech-stack {
-                display: flex;
-                justify-content: space-around;
-            }
-            #description {
-                margin: 5px 10px;
-                border: 1px solid black;
-                border-radius: 5px;
-                padding: 5px;
-                background-color: cornsilk;
-            }
-            button:hover {
-                cursor: pointer;
-            }
-            a {
-                text-decoration: underline;
-            }
-
-            
-            `}
-        </style>
         </div>
     )
 }
