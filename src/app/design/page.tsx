@@ -1,45 +1,19 @@
-'use client'
 import SVGCard from "../components/SVGCard"
 import { svgData } from "../data/svgs"
+import styles from './design.module.css'
 
 const DesignPage:React.FC = () => {
     return (
-        <div id="design-body">
-            {/* <h2>Design !</h2>
-            <hr/> */}
-            <h2>SVG Icons</h2>
+        <div className={styles.designbody}>
+            <h2 className={styles.h2}>SVG Icons</h2>
             <hr/>
-            {/* <div>
-                <button>utility</button>
-                <button>characters</button>
-            </div> */}
-            <div className="svgs">
+            <div className={styles.svgs}>
             {svgData.map((i)=> {
                 return (
                     <SVGCard {...i}/>
                 )
             })}
             </div>
-            <style jsx>
-                {`
-                h2 {
-                    margin: 5px;
-                }
-                div#design-body {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                }
-                .svgs {
-                    display: flex;
-                    margin: 0 80px;
-                    flex-direction: row;
-                    flex-wrap: wrap;
-                    align-items: center;
-                    justify-content: center;
-                }
-                `}
-            </style>
         </div>
     )
 }

@@ -4,6 +4,7 @@ import ProjectCards from "../components/ProjectCards";
 import { projectsData } from "../data/projects";
 import ProjectPopup from "../components/ProjectPopup";
 import { ProjectCardsType } from "../types/Projects";
+import styles from './portfolio.module.css'
 
 const initialData: ProjectCardsType = {
     title: '',
@@ -28,10 +29,10 @@ const PortfolioPage = () => {
     }
 
     return (
-        <div id="project-body">
-            <h2>Discography</h2>
+        <div className={styles.projectbody}>
+            <h2 className={styles.h2}>Discography</h2>
             <hr/>
-            <div id="projects">
+            <div className={styles.projects}>
             {projectsData.map((i, key)=> {
                 return  <ProjectCards {...i} onClick={(value: string) => openWindow(value)}/>
                 
@@ -40,30 +41,6 @@ const PortfolioPage = () => {
                 <ProjectPopup {...openProject} onClose={() => closeWindow()}/>
             }
             </div>
-        <style jsx>
-            {`
-            div#projects {
-                margin: 10px;
-                display: flex;
-                flex-wrap: wrap;
-                flex-direction: row;
-                justify-content: center;
-                width: 100%;
-                position: relative;
-            }
-            h2 {
-                text-align: center;
-                margin: 5px;
-            }
-            #project-body {
-                display: flex;
-                align-items: center;
-                flex-direction: column;
-            }
-
-            `}
-            
-        </style>
         </div>
     )
 }
