@@ -29,7 +29,7 @@ const PortfolioPage = () => {
 
     return (
         <div id="project-body">
-            <h2>my discography</h2>
+            <h2>Discography</h2>
             <hr/>
             <div id="projects">
             {projectsData.map((i, key)=> {
