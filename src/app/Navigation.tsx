@@ -2,6 +2,7 @@
 import { redirect } from 'next/navigation'
 import styles from './navstyle.module.css'
 import { useEffect, useState } from 'react'
+import Image from "next/image";
 
 const Navigation:React.FC = () => {
     const links: string[] = ["resume", "portfolio", "design", "reviews"]
@@ -33,9 +34,11 @@ const Navigation:React.FC = () => {
             <span><h1 onClick={() => redirect("/")}>Jess Bacheldor</h1>
              <h4>(she/her)</h4></span>
              <span className={styles.rightside}>
-            <div >
-                <img onClick={() => redirectTo("linkedin")} alt="linkedin" className={styles.links} src={"/inBug-Black.png"} width="20px" height="20px"/>
-                <img onClick={() => redirectTo("github")} alt="github" className={styles.links} src={"/github-mark.svg"} width="20px" height="20px"/>
+            <div>
+                <Image onClick={() => redirectTo("linkedin")}  className={styles.links} alt="linkedin" src={"/inBug-Black.png"} width={20} height={20} />
+                <Image onClick={() => redirectTo("github")} className={styles.links} alt="github" src={"/github-mark.svg"} width={20} height={20} />
+                {/* <img onClick={() => redirectTo("linkedin")} alt="linkedin" className={styles.links} src={"/inBug-Black.png"} width="20px" height="20px"/>
+                <img onClick={() => redirectTo("github")} alt="github" className={styles.links} src={"/github-mark.svg"} width="20px" height="20px"/> */}
             </div>
             <a href="mailto: jessica.bacheldor@gmail.com">jessica.bacheldor@gmail.com</a>
         </span>

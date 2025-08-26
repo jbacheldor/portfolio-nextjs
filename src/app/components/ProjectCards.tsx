@@ -1,11 +1,12 @@
 import { ProjectCardsType } from '../types/Projects'
 import styles from './components.module.css'
+import Image from "next/image";
 interface Props extends ProjectCardsType {
     onClick: (value: string) => void
 }
 
 const ProjectCards:React.FC<Props> = (props: Props) => {
-    const {link, title, description, techStack, repolink, image, onClick} = props
+    const {title, description, techStack, image, onClick} = props
 
     const clickRegistered = () => {
         onClick(title)
@@ -17,7 +18,8 @@ const ProjectCards:React.FC<Props> = (props: Props) => {
                 {title}
             </h3>
             <div className={styles.projectmain}>
-                {image && <img className={styles.projectimg} src={image}/>}
+                 
+                {image && <Image width={500} height={500} className={styles.projectimg} alt="picture of project" src={image} />}
             </div>
             <div className={styles.techbuttons}>
                 {techStack?.map((i, key)=>{

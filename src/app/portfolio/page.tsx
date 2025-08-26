@@ -13,14 +13,14 @@ const initialData: ProjectCardsType = {
     repolink: '',
     video: '',
     image: '',
-    onClick: (value: string) => {}
+    onClick: () => {}
 }
 
 const PortfolioPage = () => {
     const [openProject, setProject] = useState<ProjectCardsType>(initialData)
 
     const openWindow = (e: string): void => {
-        let openData = projectsData.find(o => o.title === e)
+        const openData = projectsData.find(o => o.title === e)
         if(openData) setProject(openData)
     }
 
@@ -34,7 +34,7 @@ const PortfolioPage = () => {
             <hr/>
             <div className={styles.projects}>
             {projectsData.map((i, key)=> {
-                return  <ProjectCards {...i} onClick={(value: string) => openWindow(value)}/>
+                return  <ProjectCards key={key} {...i} onClick={(value: string) => openWindow(value)}/>
                 
             })}
             {openProject.title != '' &&

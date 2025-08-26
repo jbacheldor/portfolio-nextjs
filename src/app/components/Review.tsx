@@ -1,4 +1,3 @@
-import { useEffect } from "react"
 import styles from './components.module.css'
 
 type Props = {
@@ -11,11 +10,11 @@ type Props = {
     carosel: number
 }
 
-const Review:React.FC<Props> = ({carosel, name, review, date, relation, company, rating}) => {
+const Review:React.FC<Props> = ({name, review, date, relation, company, rating}) => {
 
-    useEffect(()=> {
-        carosel= window.innerWidth
-    }, [])
+    // useEffect(()=> {
+    //     carosel= window.innerWidth
+    // }, [])
 
     return (
         <div className={styles.reviewbody}>

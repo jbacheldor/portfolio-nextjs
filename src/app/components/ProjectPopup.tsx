@@ -7,7 +7,7 @@ interface Props extends ProjectCardsType {
 }
 
 const ProjectPopup:React.FC<Props> = (props: Props) => {
-    const {title, description, link, repolink, video, image, techStack, onClose} = props
+    const {title, description, link, repolink, image, techStack, onClose} = props
 
     const closeWindow = () => {
         onClose()
@@ -24,7 +24,7 @@ const ProjectPopup:React.FC<Props> = (props: Props) => {
                 <button className={styles.closebutton} onClick={() => closeWindow()}>x</button>
             </div>
             <div className={styles.popimg}>
-                <img src={`${image}`} width="60%" height="60%"/>
+                <img width="60%" height="60%" alt="picture of project but larger" src={`${image}`}/>
             </div>
             <div className={styles.techstack}>
                 {techStack?.map((key, index)=> (

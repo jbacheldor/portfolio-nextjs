@@ -8,9 +8,9 @@ const DesignPage:React.FC = () => {
             <h2 className={styles.h2}>SVG Icons</h2>
             <hr/>
             <div className={styles.svgs}>
-            {svgData.map((i)=> {
+            {svgData.map((i, key)=> {
                 return (
-                    <SVGCard {...i}/>
+                    <SVGCard key={key} {...i}/>
                 )
             })}
             </div>

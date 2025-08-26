@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import Button from "./Button"
+import Image from "next/image"
 
 type formType = {
     name: string,
@@ -27,10 +28,10 @@ const SubmitReview:React.FC = () => {
     const [errorMsg, setMsg] = useState('')
     const stars = useRef<Array<HTMLDivElement | null>>([]);
 
-    const updateState = (e:any) => {
+    const updateState = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
         setForm({
             ...form,
-            [e.target.ariaLabel] : e.target.value
+            [e.target.ariaLabel as string] : e.target.value
         })
     }
 
@@ -59,9 +60,8 @@ const SubmitReview:React.FC = () => {
 
     }
 
-    const submitForm = async (e: any) => {
-
-        let today = new Date(Date.now()).toDateString()
+    const submitForm = async (e: React.FormEvent<HTMLFormElement>) => {
+        const today = new Date(Date.now()).toDateString()
         console.log('today', today)
         setForm({
             ...form,
@@ -118,7 +118,7 @@ const SubmitReview:React.FC = () => {
                     <span>rating</span>
                     <div>
                     {Array.from({length: 5}).map((item, index)=> (
-                        <img key={`${index}-star`} ref={el => {stars.current[index] = el}}  onClick={(e)=>changeRating(e)} aria-label={`${index}`} src={"/md-star.svg"} height="30px" width="30px"/>
+                        <Image alt={`${index}-star`}  key={`${index}-star`} ref={el => {stars.current[index] = el}}  onClick={(e)=>changeRating(e)} aria-label={`${index}`} src={"/md-star.svg"} height="30" width="30"/>
                     ))}
                     </div>
                 </label>
