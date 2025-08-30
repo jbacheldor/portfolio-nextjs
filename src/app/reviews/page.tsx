@@ -1,5 +1,5 @@
 'use client'
-import { act, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Review from "../components/Review";
 import SubmitReview from "../components/SubmitReview";
 import { fakeData } from "../data/localData";
@@ -58,11 +58,11 @@ const ReviewsPage:React.FC = () => {
 
         if(value == "reset") setSort(data)
         else if(value == "friends" || value == "family") {
-            let sorted = data.filter((input)=> input.relation.includes(value))
+            const sorted = data.filter((input)=> input.relation.includes(value))
             setSort(sorted)
         }
         else if(value == "manager" || value == "coworker") {
-            let sorted = data.filter((input)=> (input.relation.includes("manager") || input.relation.includes("coworker")))
+            const sorted = data.filter((input)=> (input.relation.includes("manager") || input.relation.includes("coworker")))
             setSort(sorted)
         }
     }

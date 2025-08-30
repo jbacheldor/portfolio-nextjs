@@ -38,13 +38,13 @@ export const fakeData = [
         {   name: "one",
         review: "jess is soo stellar and cool",
         date: 'today',
-        relation: 'coworker',
+        relation: 'coworker- egg',
         company: 'ge'
     },
     {   name: "two",
-        review: "jess is soo stellar and cool",
+        review: "jess is soo stellar and cool - family",
         date: 'today',
-        relation: 'coworker',
+        relation: 'family',
         company: 'ge'
     },
 ]
