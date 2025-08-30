@@ -26,25 +26,37 @@ export const fakeData = [
     {   name: "Dave",
         review: "jess is soo stellar and cool",
         date: 'today',
-        relation: 'coworker',
+        relation: 'manager',
         company: 'ge'
     },
-    {   name: "xx",
+    {   name: "me at me!",
         review: "jess is soo stellar and cool",
         date: 'today',
-        relation: 'coworker',
+        relation: 'family',
         company: 'ge'
     },
-        {   name: "one",
+        {   name: "mother",
         review: "jess is soo stellar and cool",
         date: 'today',
-        relation: 'coworker- egg',
+        relation: 'family',
         company: 'ge'
     },
-    {   name: "two",
+    {   name: "dad",
         review: "jess is soo stellar and cool - family",
         date: 'today',
         relation: 'family',
         company: 'ge'
+    },
+    {   name: "yasmeen",
+        review: "jess is soo stellar and cool - family",
+        date: 'today',
+        relation: 'friend',
+        company: 'ge'
+    },
+    {   name: "dani",
+        review: "jess is soo stellar and cool - family",
+        date: 'today',
+        relation: 'friend',
+        company: 'roommate'
     },
 ]
