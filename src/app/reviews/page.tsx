@@ -57,15 +57,18 @@ const ReviewsPage:React.FC = () => {
         // check to see who is sorting
         setTag(value)
 
+        console.log('value', value)
         if(value == "reset") setSort(data)
         else if(value == "friend" || value == "family") {
-            console.log('value')
+            console.log('in friend or family', value)
             const sorted = data.filter((input)=> input.relation.includes(value))
             console.log('sorted', sorted)
             setSort(sorted)
         }
         else if(value == "manager" || value == "coworker") {
-            const sorted = data.filter((input)=> (input.relation.includes("manager") || input.relation.includes("coworker")))
+            console.log('in manager or coworker', value)
+            const sorted = data.filter((input)=> ((input.relation.includes("manager") || input.relation.includes("coworker"))))
+            console.log('sorted', sorted)
             setSort(sorted)
         }
     }
