@@ -35,7 +35,6 @@ const Review:React.FC<Props> = ({carosel, name, review, date, relation, company,
                     text-align:center;
                     padding: 10px;
                     margin: 10px;
-                    animation: horizontalLoop 20s linear infinite;
                     display: flex;
                     justify-content: space-between;
                     flex-direction: column;
@@ -44,14 +43,7 @@ const Review:React.FC<Props> = ({carosel, name, review, date, relation, company,
                     display: flex;
                     justify-content: space-between;
                 }
-                @keyframes horizontalLoop {
-                    0% {
-                        transform: translateX(0px);
-                    }
-                    100% {
-                        transform: translateX(-${carosel}px)
-                    }
-                }
+
             `}
 
             </style>

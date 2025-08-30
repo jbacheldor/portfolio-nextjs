@@ -29,6 +29,7 @@ const ReviewsPage:React.FC = () => {
     const [errorMessage, setMsg] = useState('')
     const [sortedData, setSort] = useState<Review[] | []>([])
     const [activeTag, setTag] = useState('reset')
+    const [theme, setTheme] = useState(false)
 
     useEffect(()=> {
         const carosel = (fakeData.length-1.5) * 250
@@ -45,7 +46,7 @@ const ReviewsPage:React.FC = () => {
                 setSort(res.data)
             })
             .catch((error) => {
-                setMsg('error:  ' + error )
+                setMsg('error:  ' + error)
             })
             
         }
@@ -57,8 +58,10 @@ const ReviewsPage:React.FC = () => {
         setTag(value)
 
         if(value == "reset") setSort(data)
-        else if(value == "friends" || value == "family") {
+        else if(value == "friend" || value == "family") {
+            console.log('value')
             const sorted = data.filter((input)=> input.relation.includes(value))
+            console.log('sorted', sorted)
             setSort(sorted)
         }
         else if(value == "manager" || value == "coworker") {
@@ -66,6 +69,10 @@ const ReviewsPage:React.FC = () => {
             setSort(sorted)
         }
     }
+
+    const changeTheme = () => {
+        setTheme(!theme)
+    }  
 
     return (
         <>
@@ -75,6 +82,10 @@ const ReviewsPage:React.FC = () => {
         {errorMessage &&
             <div>{errorMessage}</div>
         }
+        <div id="themes">
+            <p>Review Display:</p>
+            <Button  text="honk" onClick={()=> changeTheme()}/>
+        </div>
         <div id="filter">
             <span>filter reviews by relation:</span>
             <div id="buttons">
@@ -84,7 +95,7 @@ const ReviewsPage:React.FC = () => {
                 <button disabled={activeTag == "reset" ? true : false} id="resetButton" onClick={()=> sortData('reset')}>reset</button>
             </div>
         </div>
-        <div id="reviews">
+        <div id={`review-theme-${theme}`}>
         {sortedData.length > 0 &&
             data.map((key, index)=> (
                 <Review key={index} carosel={carosel} name={key.name} review={key.review} date={key.date} relation={key.relation} company={key.company}/>
@@ -114,14 +125,32 @@ const ReviewsPage:React.FC = () => {
                     flex-direction: row;
                     justify-content: space-around;
                 }
+                #themes {
+                    text-align: center;
+                }
                 #filter {
                     width: 100%;
                     text-align: center;
                 }
-                #reviews {
+                #review-theme-false {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    flex-wrap: wrap;
+                }
+                #review-theme-true {
                     display: flex;
                     flex-direction: row;
                     justify-content: flex-end;
+                    animation: horizontalLoop 20s linear infinite;
+                }
+                @keyframes horizontalLoop {
+                    0% {
+                        transform: translateX(0px);
+                    }
+                    100% {
+                        transform: translateX(-1000px);
+                    }
                 }
                 #resetButton {
                     text-decoration: none;
