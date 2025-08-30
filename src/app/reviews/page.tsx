@@ -93,8 +93,8 @@ const ReviewsPage:React.FC = () => {
             <span>filter reviews by relation:</span>
             <div id="buttons">
                 <Button id={activeTag == "family" ? "active" : ""} text="family" onClick={() => sortData('family')}/>
-                <Button id={activeTag == "coworker" ? "active" : ""}  text="coworker" onClick={()=>sortData('coworkers')}/>
-                <Button id={activeTag == "friend" ? "active" : ""}  text="friend" onClick={()=> sortData('friends')}/>
+                <Button id={activeTag == "coworker" ? "active" : ""}  text="coworker" onClick={()=>sortData('coworker')}/>
+                <Button id={activeTag == "friend" ? "active" : ""}  text="friend" onClick={()=> sortData('friend')}/>
                 <button disabled={activeTag == "reset" ? true : false} id="resetButton" onClick={()=> sortData('reset')}>reset</button>
             </div>
         </div>
