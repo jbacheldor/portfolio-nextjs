@@ -18,7 +18,7 @@ const initialForm = {
     name: "",
     review: "",
     date: "",
-    relation: "",
+    relation: "manager",
     company: "",
     rating: 0,
 }
@@ -92,6 +92,14 @@ const SubmitReview:React.FC = () => {
 
     }
 
+    const updateRelation = (e: React.ChangeEvent<HTMLSelectElement>) => {
+
+        setForm({
+            ...form,
+            relation: e.target.value
+        })
+    }
+
     return (
         <div id='submit-body'>
             <form onSubmit={(e)=>submitForm(e)}>
@@ -113,7 +121,13 @@ const SubmitReview:React.FC = () => {
                 </label>
                 <label>
                     <span>relation</span>
-                    <input aria-label="relation" value={form.relation}  onChange={(e)=> updateState(e)}></input>
+                    <select id="drop-down" value={form.relation}  onChange={(e)=>updateRelation(e)}>
+                        <option aria-label="manager">manager</option>
+                        <option aria-label="coworker">coworker</option>
+                        <option aria-label="friend">friend</option>
+                        <option aria-label="family">family</option>
+                        <option aria-label="admirer">secret admirer</option>
+                    </select>
                 </label>
                 <label id="stars">
                     <span>rating</span>
@@ -175,6 +189,13 @@ const SubmitReview:React.FC = () => {
                 }
                 .star-img:hover {
                     cursor: pointer;
+                }
+                #drop-down {
+                    outline: pink;
+                    border: 2px pink solid;
+                }
+                option {
+                    background-color: pink;
                 }
                 
                 `}

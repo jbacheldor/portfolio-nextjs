@@ -41,4 +41,4 @@ to-do:
 # fix the carosel
 # buttons on review to filter by 
 # get some reviews in there
-# 
+# add some stop or other view options for the reviews.. for ada..

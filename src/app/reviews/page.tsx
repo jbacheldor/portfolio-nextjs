@@ -128,9 +128,9 @@ const ReviewsPage:React.FC = () => {
                     padding: 10px;
                     margin: 10px;
                     border-radius: 20px;
-                    background-color: darksalmon;
+                    background-color: pink;
                     box-shadow: 2px 2px 10px pink;
-                    color: linen;
+                    color: chocolate;
                     border: none;
                     font-weight: 600;
                 }
