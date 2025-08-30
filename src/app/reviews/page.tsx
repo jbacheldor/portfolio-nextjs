@@ -100,7 +100,7 @@ const ReviewsPage:React.FC = () => {
         </div>
         <div id={`review-theme-${theme}`}>
         {sortedData.length > 0 &&
-            data.map((key, index)=> (
+            sortedData.map((key, index)=> (
                 <Review key={index} carosel={carosel} name={key.name} review={key.review} date={key.date} relation={key.relation} company={key.company}/>
             ))
         }
