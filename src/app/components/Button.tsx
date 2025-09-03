@@ -1,5 +1,4 @@
 'use client'
-import styles from './components.module.css'
 
 type Props = {
     text: string,

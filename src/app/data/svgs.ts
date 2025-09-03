@@ -1,4 +1,4 @@
-import { SVGType } from "../types/SVGS";
+import { GifType, SVGType } from "../types/SVGS";
 
 export const svgData: SVGType[] = [
     { title: 'sparkles', image: '/svgs/bullet_point.svg'},
@@ -16,4 +16,10 @@ export const svgData: SVGType[] = [
     { title: 'headstone v1', image: '/svgs/headstone-1.svg'},
     { title: 'headstone v2', image: '/svgs/headstone-2.svg'},
     { title: 'headstone v3', image: '/svgs/headstone-3.svg'},
+    { title: 'sheep', image: '/svgs/neutral-sheep.svg'},
+    { title: 'angry sheep', image: '/svgs/angry-sheep.svg'},
+]
+
+export const gifData: GifType[] = [
+     { title: 'angry sheep', file: '/gifs/sheep-flow.json'},
 ]
