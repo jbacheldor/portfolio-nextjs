@@ -1,5 +1,6 @@
+import GifWrapper from "../components/GifWrapper"
 import SVGCard from "../components/SVGCard"
-import { svgData } from "../data/svgs"
+import { gifData, svgData } from "../data/svgs"
 import styles from './design.module.css'
 
 const DesignPage:React.FC = () => {
@@ -14,6 +15,12 @@ const DesignPage:React.FC = () => {
                 )
             })}
             </div>
+            <hr/>
+            <h2 className={styles.h2}>Animations</h2>
+            <hr/>
+            {gifData.map((i, key) => {
+                return (<GifWrapper key={key} {...i}/>)
+            })}
         </div>
     )
 }
