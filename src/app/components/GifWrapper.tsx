@@ -10,6 +10,7 @@ type Props = {
 
 const GifWrapper:React.FC<Props> = ({title, file})=> {
     const [gif, setGif] = useState(null)
+    const [play, setPlay] = useState(false)
 
     const getGif = async () => {
         fetch(file)
@@ -17,6 +18,11 @@ const GifWrapper:React.FC<Props> = ({title, file})=> {
             .then((json) => {
                 setGif(json)
         });
+    }
+
+    const changePlay = () => {
+        console.log('in here???')
+        setPlay(!play)
     }
 
     useEffect(() => {
@@ -29,11 +35,14 @@ const GifWrapper:React.FC<Props> = ({title, file})=> {
             <h3>{title}</h3>
             <Lottie 
                 animationData = {gif}
-                loop={true}
+                loop={play ? true : false}
             />
-            <a href={`${file}`} download={`${file}`}>
-                <Button text="download"/> 
-            </a>
+            <div className="buttons">
+                <a href={`${file}`} download={`${file}`}>
+                    <Button text="download"/> 
+                </a>
+                <Button text={play ? 'pause' : 'play'} onClick={() =>changePlay()}/>
+            </div>
 
         </div>
         <style jsx>
@@ -48,6 +57,11 @@ const GifWrapper:React.FC<Props> = ({title, file})=> {
                     border-radius: 20px;
                     background-color: peachpuff;
                     margin: 10px;
+                }
+                .buttons {
+                    display: flex;
+                    flex-direction: row;
+
                 }
             `}
         </style>
