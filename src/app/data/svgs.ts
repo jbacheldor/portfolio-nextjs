@@ -18,6 +18,8 @@ export const svgData: SVGType[] = [
     { title: 'headstone v3', image: '/svgs/headstone-3.svg'},
     { title: 'sheep', image: '/svgs/neutral-sheep.svg'},
     { title: 'angry sheep', image: '/svgs/angry-sheep.svg'},
+    { title: 'ram', image: '/svgs/ram.svg'},
+    { title: 'dazed ram', image: '/svgs/dazed-ram.svg'},
 ]
 
 export const gifData: GifType[] = [
