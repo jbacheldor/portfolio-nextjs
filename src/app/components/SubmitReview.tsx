@@ -17,7 +17,7 @@ type formType = {
 const initialForm = {
     name: "",
     review: "",
-    date: "",
+    date: new Date(Date.now()).toDateString(),
     relation: "manager",
     company: "",
     rating: 0,
@@ -32,7 +32,7 @@ const SubmitReview:React.FC = () => {
     const updateState = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
         setForm({
             ...form,
-            [e.target.ariaLabel as string] : sanitize(e.target.value)
+            [e.target.ariaLabel as string] : e.target.value
         })
     }
 
@@ -62,14 +62,8 @@ const SubmitReview:React.FC = () => {
     }
 
     const submitForm = async (e: React.FormEvent<HTMLFormElement>) => {
-        const today = new Date(Date.now()).toDateString()
-        console.log('today', today)
-        setForm({
-            ...form,
-            date: today
-        })
-
         e.preventDefault();
+
 
         await fetch(`${pathName}/server/submitdata`, 
             {method: "POST",

@@ -1,21 +1,23 @@
 export const fakeData = [
     {   name: "Joe",
         review: "jess is soo stellar and cool",
-        date: 'today',
+        date: 'Mon Sep 15 2025',
         relation: 'manager',
         company: 'ge'
     },
     {   name: "Daniel",
         review: "jess is soo stellar and cool",
-        date: 'today',
+        date: 'Mon Sep 15 2025',
         relation: 'coworker',
-        company: 'ge'
+        company: 'ge',
+        rating: 2
     },
     {   name: "Derartu",
-        review: "jess is soo stellar and cool",
-        date: 'today',
+        review: "jess is soo stellar and cool. jess is soo stellar and cool. jess is soo stellar and cool. jess is soo stellar and cool.. jess is soo stellar and cool. jess is soo stellar and cool",
+        date: 'Mon Sep 15 2025',
         relation: 'coworker',
-        company: 'ge'
+        company: 'ge',
+        rating: 3
     },
     {   name: "Sam",
         review: "jess is soo stellar and cool",

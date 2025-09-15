@@ -87,7 +87,7 @@ const ReviewsPage:React.FC = () => {
         }
         <div id="themes">
             <p>Review Display:</p>
-            <Button  text="honk" onClick={()=> changeTheme()}/>
+            <Button  text={theme ? "rows" : "carosel"} onClick={()=> changeTheme()}/>
         </div>
         <div id="filter">
             <span>filter reviews by relation:</span>
@@ -101,11 +101,11 @@ const ReviewsPage:React.FC = () => {
         <div id={`review-theme-${theme}`}>
         {sortedData.length > 0 &&
             sortedData.map((key, index)=> (
-                <Review key={index} carosel={carosel} name={key.name} review={key.review} date={key.date} relation={key.relation} company={key.company}/>
+                <Review key={index} {...key}/>
             ))
         }
         {pathName?.includes("localhost") && fakeData.map((key, index)=> (
-                <Review key={index} carosel={carosel} name={key.name} review={key.review} date={key.date} relation={key.relation} company={key.company}/>
+                <Review key={index} {...key}/>
             ))
             }
         </div>
@@ -140,11 +140,13 @@ const ReviewsPage:React.FC = () => {
                     flex-direction: row;
                     justify-content: center;
                     flex-wrap: wrap;
+                    align-items: center;
                 }
                 #review-theme-true {
                     display: flex;
                     flex-direction: row;
                     justify-content: flex-end;
+                    align-items: center;
                     animation: horizontalLoop 20s linear infinite;
                 }
                 @keyframes horizontalLoop {

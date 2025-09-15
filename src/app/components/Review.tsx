@@ -7,10 +7,10 @@ type Props = {
     relation: string,
     company: string,
     rating?: number,
-    carosel: number
+    carosel?: number
 }
 
-const Review:React.FC<Props> = ({carosel, name, review, date, relation, company, rating}) => {
+const Review:React.FC<Props> = ({ name, review, date, relation, company, rating}) => {
 
     // useEffect(()=> {
     //     carosel= window.innerWidth
@@ -18,10 +18,10 @@ const Review:React.FC<Props> = ({carosel, name, review, date, relation, company,
 
     return (
         <div className="reviewbody">
-            <span>{name} - [{relation} from {company}] says:</span>
-            <div>{review}</div>
+            <div className='top-section'><span>{name} - {relation} from {company} says:</span></div>
+            <div className="review">{review}</div>
             <div className="bottomsection">
-                <span>{rating}/5</span>
+                <span>{rating && <p>{rating}/5</p>}</span>
                 <span>Submitted on: {date}</span>
             </div>
             <style jsx>
@@ -30,8 +30,9 @@ const Review:React.FC<Props> = ({carosel, name, review, date, relation, company,
                     background-color: peachpuff;
                     border-radius: 20px;
                     height: 100%;
-                    min-width: 250px;
+                    min-width: 300px;
                     min-height: 100px;
+                    max-width: 300px;
                     text-align:center;
                     padding: 10px;
                     margin: 10px;
@@ -39,9 +40,17 @@ const Review:React.FC<Props> = ({carosel, name, review, date, relation, company,
                     justify-content: space-between;
                     flex-direction: column;
                 }
+                .review {
+                    margin: 10px;
+                }
                 .bottomsection {
                     display: flex;
                     justify-content: space-between;
+                    font-weight: 550;
+                }
+                .top-section {
+                    text-align: left;
+                    font-weight: 550;
                 }
 
             `}
