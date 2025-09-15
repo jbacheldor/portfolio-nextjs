@@ -167,7 +167,7 @@
     margin: 20px;
     text-align: center;
     transition: top ease 0.5s;
-    background-color: wheat;
+    background-color: peachpuff;
 }
 .svgbody:hover {
     box-shadow: 2px 2px 10px peachpuff, 4px 4px 10px pink;
