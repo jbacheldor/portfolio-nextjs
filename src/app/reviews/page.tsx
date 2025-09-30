@@ -4,7 +4,7 @@ import Review from "../components/Review";
 import SubmitReview from "../components/SubmitReview";
 import { fakeData } from "../data/localData";
 import Button from "../components/Button";
-
+import { openDB } from "idb";
 type Review = {
     name: string,
     review: string,
@@ -30,34 +30,103 @@ const ReviewsPage:React.FC = () => {
     const [sortedData, setSort] = useState<Review[] | []>([])
     const [activeTag, setTag] = useState('reset')
     const [theme, setTheme] = useState(false)
+    const [indexDB, setIndexDB] = useState<any>()
 
-    useEffect(()=> {
-        const carosel = (fakeData.length-1.5) * 250
-        setCarosel(carosel)
-        async function getData () {
+    // if it's been more than an hour then system can disregard cache
+    const calculateTime =  async () => {
+        const timestamp = await indexDB.transaction('reviews').objectStore('reviews').get('timestamp')
+        var now = new Date().getTime()
+        if(((now - timestamp)/1000/60) > 60) return true 
+        else return false
+    }
+ 
+    async function getData (override: boolean = false) {
+        const result = calculateTime()
+
+        // if it hasn't been less than an hour 
+        // also wait - use case - for what if nothing is in there 
+        // so if //// gotten think upon this
+        if(!result && !override) {
+            const item = await indexDB.transaction('reviews').objectStore('reviews').get('data')
+            setData(item)
+            setSort(item)
+        }
+        else {
             await fetch(`${pathName}/server/getdata`)
             .then(async (data)=> {
                 if(data.status != 200){
                     setMsg('error getting data ')
                 }
                 const res = await data.json()
-                console.log('res', res.data)
+                // save data locally
                 setData(res.data)
                 setSort(res.data)
+
+                // save data in indexdb
+                await putDataIndexDB(res.data)
             })
             .catch((error) => {
                 setMsg('error:  ' + error)
-            })
-            
+            })    
         }
-        if (!pathName?.includes("localhost")) getData()
+    } 
+
+    async function putDataIndexDB (data: any) {
+        const rw = indexDB.transaction('reviews', 'readwrite')
+        const store = await rw.objectStore('reviews')
+        await store.put('data', data)
+        await store.put('timestamp', new Date().getTime())
+        await rw.done
+    }
+
+    // also if someone submits then need to invalidate cache and refetch data 
+    // // maybe think about putting in some rate limits as well
+    const refreshData = () => {
+        getData(true)
+    }
+
+    async function initIndexDB(){
+        const dbName = 'jbxlu'
+        const storeName = 'reviews'
+        const version = 1 //versions start at 1
+
+        // checks if store is created yet - if not it creates it
+        // reallllly need to revisit this like tomorrow morning
+        // when i am feeling jazzed about documentation
+        const db = await openDB(dbName, version, {
+            upgrade(db, oldVersion, newVersion, transaction) {
+            const store = db.createObjectStore(storeName)
+            }
+        })
+
+        setIndexDB(db)
+    }
+
+    // https://www.freecodecamp.org/news/a-quick-but-complete-guide-to-indexeddb-25f030425501/
+    async function deleteIndexDB(){
+        const storeName = 'reviews'
+        // adds in data
+        const rw = indexDB.transaction(storeName, 'readwrite')
+        const store = await rw.objectStore(storeName)
+
+        // to delete from store
+        await store.delete('data')
+        await store.delete('timestamp')
+        await rw.done
+    }
+
+    useEffect(()=> {
+        // if not local host then call getData
+        if (!pathName?.includes("localhost")) {
+            initIndexDB()
+            getData()
+        }
     }, [pathName])
 
     const sortData = (value: string) => {
         // check to see who is sorting
         setTag(value)
 
-        console.log('value', value)
         if(value == "reset") setSort(data)
         else if(value == "friend" || value == "family") {
             console.log('in friend or family', value)
@@ -112,7 +181,7 @@ const ReviewsPage:React.FC = () => {
 
         <hr/>
         <div>
-            <SubmitReview/>
+            <SubmitReview onSubmit={refreshData}/>
         </div>
         <style jsx>
             {`

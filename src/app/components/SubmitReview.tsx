@@ -23,7 +23,11 @@ const initialForm = {
     rating: 0,
 }
 
-const SubmitReview:React.FC = () => {
+type props = {
+    onSubmit: () => void
+}
+
+const SubmitReview:React.FC<props> = ({onSubmit}) => {
     const [form, setForm] = useState<formType>(initialForm)
     const pathName = process.env.BASE_URL
     const [errorMsg, setMsg] = useState('')
@@ -77,6 +81,8 @@ const SubmitReview:React.FC = () => {
                 stars.current.forEach((item)=> {
                     if(item) item.style.filter = ""
                 })
+                // this refreshes the data after submission
+                onSubmit()
             }
         })
         .catch((error) => {
