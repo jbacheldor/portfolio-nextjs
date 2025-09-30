@@ -20,6 +20,10 @@ export const svgData: SVGType[] = [
     { title: 'angry sheep', image: '/svgs/angry-sheep.svg'},
     { title: 'ram', image: '/svgs/ram.svg'},
     { title: 'dazed ram', image: '/svgs/dazed-ram.svg'},
+    { title: 'tomato', image: '/svgs/tomato.svg'},
+    { title: 'blueberry', image: '/svgs/blueberry.svg'},
+    { title: 'red splat', image: '/svgs/red-splate.svg'},
+    { title: 'blue splat', image: '/svgs/blue-splat.svg'},
 ]
 
 export const gifData: GifType[] = [

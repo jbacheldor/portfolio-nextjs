@@ -71,13 +71,13 @@ const Navigation:React.FC = () => {
                     color: white;
                 }
                 button:hover {
-                    cursor: pointer;
+                    cursor: url('/svgs/red-splat.svg'), auto;
                     position: relative;
                     top: -1px;
                     box-shadow: 4px 4px 10px peru, 2px 2px 20px darksalmon;
                     }
                 h1:hover {
-                    cursor: pointer;
+                    // cursor: pointer;
                 }
 
             `}

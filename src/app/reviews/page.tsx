@@ -178,7 +178,7 @@ const ReviewsPage:React.FC = () => {
                     background-color: lightgrey;
                     color: white;
                     box-shadow: none;
-                    cursor: not-allowed;
+                    // cursor: not-allowed;
                     top: 0;
                 }
             }

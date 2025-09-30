@@ -16,7 +16,7 @@
     color: white;
 }
 .button:hover {
-    cursor: pointer;
+    cursor: url('/svgs/red-splat.svg'), auto;
     position: relative;
     top: -1px;
     box-shadow: 4px 4px 10px peru, 2px 2px 20px darksalmon;
@@ -43,7 +43,7 @@
     border-radius: 5px;
 }
 .projectmain:hover {
-    cursor: pointer;
+    /* cursor: pointer; */
 }    
 .projectdescription {
     margin: 10px;
@@ -124,7 +124,7 @@
 }
 
 .closebutton:hover {
-    cursor: pointer;
+    /* cursor: pointer; */
     position: relative;
     top: -1px;
     box-shadow: 4px 4px 10px peru, 2px 2px 20px darksalmon;

@@ -1,6 +1,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  cursor:  url('/svgs/tomato.svg'), crosshair;
 }
 
 @media (prefers-color-scheme: light) {
@@ -27,6 +28,10 @@ body {
   }
 }
 
+/* body:hover {
+  cursor: url('/splat.png'), auto;
+} */
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -39,7 +44,7 @@ a {
 }
 
 button:hover, a:hover {
-  cursor:pointer;
+  cursor: url('/svgs/red-splat.svg'), auto;
 }
 
 /* @media (prefers-color-scheme: light) {
