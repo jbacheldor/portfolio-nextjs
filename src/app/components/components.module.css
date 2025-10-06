@@ -84,10 +84,12 @@
 
 /* this is for project popup */
 .popupwindow {
-    position: absolute;
+    position: fixed;
+    z-index: 10;
     width: 500px;
     background-color: peachpuff;
     border: 1px solid black;
+    border-radius: 5px;
 }
 .popimg {
     text-align: center;
