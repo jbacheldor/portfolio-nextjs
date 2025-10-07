@@ -4,7 +4,7 @@ import Review from "../components/Review";
 import SubmitReview from "../components/SubmitReview";
 import { fakeData } from "../data/localData";
 import Button from "../components/Button";
-import { openDB } from "idb";
+import { IDBPDatabase, openDB } from "idb";
 type Review = {
     name: string,
     review: string,
@@ -30,96 +30,117 @@ const ReviewsPage:React.FC = () => {
     const [sortedData, setSort] = useState<Review[] | []>([])
     const [activeTag, setTag] = useState('reset')
     const [theme, setTheme] = useState(false)
-    const [indexDB, setIndexDB] = useState<any>()
+    const [indexDB, setIndexDB] = useState<IDBPDatabase>()
+    const [loading, setLoading] = useState(true);
 
     // if it's been more than an hour then system can disregard cache
-    const calculateTime =  async () => {
-        const timestamp = await indexDB.transaction('reviews').objectStore('reviews').get('timestamp')
+    const queryExpired =  async (test: IDBPDatabase) => {
+        console.log('indexDB', await indexDB)
+        
+        const timestamp = await test.transaction('reviews').objectStore('reviews').get('timestamp')
+        console.log('timestamp', timestamp)
+        if(timestamp == null) return true
+
+        console.log('timestamp', timestamp)
         var now = new Date().getTime()
+        console.log('now', now)
+        console.log('calculating,,,, ', ((now - timestamp)/1000/60) > 60)
+        // if it's been more than 60 minutes return true that query has expired 
         if(((now - timestamp)/1000/60) > 60) return true 
+        // else return false and keep using data in indexdb
         else return false
     }
  
-    async function getData (override: boolean = false) {
-        const result = calculateTime()
+    async function getData(test: IDBPDatabase, override: boolean = false) {
+        const expired = await queryExpired(test)
 
-        // if it hasn't been less than an hour 
-        // also wait - use case - for what if nothing is in there 
-        // so if //// gotten think upon this
-        if(!result && !override) {
-            const item = await indexDB.transaction('reviews').objectStore('reviews').get('data')
-            setData(item)
-            setSort(item)
-        }
-        else {
+        console.log('what is override', override)
+        console.log('what is result', expired)
+
+        // if the data is expired or if has been overriden by new submission,,, query new data!
+        if(override || expired) {
+            console.log('what the h is it working do we bop in here')
             await fetch(`${pathName}/server/getdata`)
             .then(async (data)=> {
                 if(data.status != 200){
-                    setMsg('error getting data ')
+                    setMsg('error getting data')
                 }
                 const res = await data.json()
                 // save data locally
                 setData(res.data)
                 setSort(res.data)
+                setLoading(false)
 
                 // save data in indexdb
-                await putDataIndexDB(res.data)
+                await putDataIndexDB(res.data, test)
             })
             .catch((error) => {
-                setMsg('error:  ' + error)
-            })    
+                console.log(error)
+                setMsg('error getting reviews from server')
+            })  
+        } else {
+            console.log('are we in here???')
+            const transaction = test.transaction(["jbxlu"], "readwrite");
+            console.log('trans', transaction)
+            const item = await transaction.objectStore('reviews').get('data')
+            console.log('item', item)
+            setData(item)
+            setSort(item)
         }
     } 
 
-    async function putDataIndexDB (data: any) {
-        const rw = indexDB.transaction('reviews', 'readwrite')
+    async function putDataIndexDB (data: any, test: IDBPDatabase) {
+        const rw = test.transaction(['reviews'], 'readwrite')
         const store = await rw.objectStore('reviews')
-        await store.put('data', data)
-        await store.put('timestamp', new Date().getTime())
-        await rw.done
+        data.forEach((review: any)=> {
+            console.log('review??', review)
+            store.add(review, review.id)
+        })
+
+        await Promise.all([store.put('timestamp', new Date().getTime()), rw.done]);
     }
 
     // also if someone submits then need to invalidate cache and refetch data 
     // // maybe think about putting in some rate limits as well
     const refreshData = () => {
-        getData(true)
+        console.log('in refresh data')
+        // getData(true)
     }
 
     async function initIndexDB(){
         const dbName = 'jbxlu'
-        const storeName = 'reviews'
-        const version = 1 //versions start at 1
-
-        // checks if store is created yet - if not it creates it
-        // reallllly need to revisit this like tomorrow morning
-        // when i am feeling jazzed about documentation
-        const db = await openDB(dbName, version, {
-            upgrade(db, oldVersion, newVersion, transaction) {
-            const store = db.createObjectStore(storeName)
+        // const storeName = 'reviews'
+        
+        const db = await openDB(dbName, 1, {
+            upgrade(db) {
+                db.createObjectStore('reviews');
             }
         })
-
+        console.log('initializing db', db)
         setIndexDB(db)
+        return db
     }
 
     // https://www.freecodecamp.org/news/a-quick-but-complete-guide-to-indexeddb-25f030425501/
     async function deleteIndexDB(){
         const storeName = 'reviews'
         // adds in data
-        const rw = indexDB.transaction(storeName, 'readwrite')
+        const rw = indexDB.transaction(storeName, 'versionchange')
         const store = await rw.objectStore(storeName)
 
-        // to delete from store
-        await store.delete('data')
-        await store.delete('timestamp')
-        await rw.done
+        // to delete from store, to delete timestamp, and to delete the data
+        await Promise.all([store.delete('data'), store.delete('timestamp'), rw.done]);
     }
 
     useEffect(()=> {
+
+        async function launch() {
+            const test = await initIndexDB()
+            await getData(test)
+        }
         // if not local host then call getData
-        if (!pathName?.includes("localhost")) {
-            initIndexDB()
-            getData()
+        if (pathName?.includes("localhost")) {
+            launch()
         }
     }, [pathName])
 
@@ -156,7 +177,7 @@ const ReviewsPage:React.FC = () => {
         }
         <div id="themes">
             <p>Review Display:</p>
-            <Button  text={theme ? "rows" : "carosel"} onClick={()=> changeTheme()}/>
+            <Button  text={theme ? "rows" : "carosel"} disabled={loading ? true : false} onClick={()=> changeTheme()}/>
         </div>
         <div id="filter">
             <span>filter reviews by relation:</span>
@@ -168,15 +189,22 @@ const ReviewsPage:React.FC = () => {
             </div>
         </div>
         <div id={`review-theme-${theme}`}>
-        {sortedData.length > 0 &&
+        {loading && 
+            <div id='loader'>
+                <img id="spin-img" src={"/svgs/spin.svg"} width="150px" height="150px"/>
+                {/* <img id="spin-img" src={"/md-star.svg"} width="100px" height="100px"/> */}
+                <span id='load-words'></span>
+            </div>
+            }
+        {!loading && sortedData.length > 0 &&
             sortedData.map((key, index)=> (
                 <Review key={index} {...key}/>
             ))
         }
-        {pathName?.includes("localhost") && fakeData.map((key, index)=> (
+        {/* {pathName?.includes("localhost") && fakeData.map((key, index)=> (
                 <Review key={index} {...key}/>
             ))
-            }
+            } */}
         </div>
 
         <hr/>
@@ -249,6 +277,32 @@ const ReviewsPage:React.FC = () => {
                     box-shadow: none;
                     // cursor: not-allowed;
                     top: 0;
+                }
+                #loader {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    margin: 10px;
+                    width: 100%;
+                    align-items: center;
+                }
+                #spin-img {
+                    animation: spin 5s linear infinite;
+                    padding: 10px;
+                }
+                @keyframes spin {
+                    0% { transform: rotate(0deg); }
+                    100% { transform: rotate(360deg); }
+                }
+                #load-words::before {
+                    content: 'fetching reviews';
+                    animation:  load-slow linear 2.5s infinite;
+                }
+                @keyframes load-slow {
+                    0% {content: 'fetching reviews';}
+                    25% {content: 'fetching reviews.';}
+                    50% {content: 'fetching reviews..';}
+                    100% {content: 'fetching reviews...';}
                 }
             }
             `}

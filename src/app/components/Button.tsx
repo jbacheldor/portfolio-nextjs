@@ -4,12 +4,13 @@ type Props = {
     text: string,
     onClick?: () => void,
     id?: string,
+    disabled?: boolean,
 }
 
-const Button:React.FC<Props> = ({id, text, onClick}) => {
+const Button:React.FC<Props> = ({id, text, onClick, disabled}) => {
 
     return (
-        <button id={id} className='button' onClick={onClick}>
+        <button id={id} className='button' disabled={disabled} onClick={onClick}>
             {text}
             <style jsx>
                 {`
