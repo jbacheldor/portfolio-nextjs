@@ -38,13 +38,10 @@ const ReviewsPage:React.FC = () => {
         console.log('indexDB', await indexDB)
         
         const timestamp = await test.transaction('reviews').objectStore('reviews').get('timestamp')
-        console.log('timestamp', timestamp)
         if(timestamp == null) return true
 
-        console.log('timestamp', timestamp)
         var now = new Date().getTime()
-        console.log('now', now)
-        console.log('calculating,,,, ', ((now - timestamp)/1000/60) > 60)
+
         // if it's been more than 60 minutes return true that query has expired 
         if(((now - timestamp)/1000/60) > 60) return true 
         // else return false and keep using data in indexdb
@@ -54,12 +51,8 @@ const ReviewsPage:React.FC = () => {
     async function getData(test: IDBPDatabase, override: boolean = false) {
         const expired = await queryExpired(test)
 
-        console.log('what is override', override)
-        console.log('what is result', expired)
-
         // if the data is expired or if has been overriden by new submission,,, query new data!
         if(override || expired) {
-            console.log('what the h is it working do we bop in here')
             await fetch(`${pathName}/server/getdata`)
             .then(async (data)=> {
                 if(data.status != 200){
@@ -79,25 +72,35 @@ const ReviewsPage:React.FC = () => {
                 setMsg('error getting reviews from server')
             })  
         } else {
-            console.log('are we in here???')
-            const transaction = test.transaction(["jbxlu"], "readwrite");
-            console.log('trans', transaction)
+            const transaction = test.transaction(['reviews'], "readwrite");
             const item = await transaction.objectStore('reviews').get('data')
-            console.log('item', item)
-            setData(item)
-            setSort(item)
+            const res = unassign(item)
+            setData(res)
+            setSort(res)
+            setLoading(false)
         }
     } 
+
+    const unassign = (data: any) => {
+        let newData = []
+        for (let key in data) {
+            newData.push(data[key])
+        }
+        return newData
+    }
 
     async function putDataIndexDB (data: any, test: IDBPDatabase) {
         const rw = test.transaction(['reviews'], 'readwrite')
         const store = await rw.objectStore('reviews')
+
+        const objData = Object.assign({}, data); 
+        store.add(objData, 'data')
+
         data.forEach((review: any)=> {
-            console.log('review??', review)
             store.add(review, review.id)
         })
 
-        await Promise.all([store.put('timestamp', new Date().getTime()), rw.done]);
+        await Promise.all([store.put(new Date().getTime(), 'timestamp'), rw.done]);
     }
 
     // also if someone submits then need to invalidate cache and refetch data 
@@ -121,25 +124,13 @@ const ReviewsPage:React.FC = () => {
         return db
     }
 
-    // https://www.freecodecamp.org/news/a-quick-but-complete-guide-to-indexeddb-25f030425501/
-    async function deleteIndexDB(){
-        const storeName = 'reviews'
-        // adds in data
-        const rw = indexDB.transaction(storeName, 'versionchange')
-        const store = await rw.objectStore(storeName)
-
-        // to delete from store, to delete timestamp, and to delete the data
-        await Promise.all([store.delete('data'), store.delete('timestamp'), rw.done]);
-    }
-
     useEffect(()=> {
-
         async function launch() {
             const test = await initIndexDB()
             await getData(test)
         }
         // if not local host then call getData
-        if (pathName?.includes("localhost")) {
+        if (!pathName?.includes("localhost")) {
             launch()
         }
     }, [pathName])
@@ -201,10 +192,10 @@ const ReviewsPage:React.FC = () => {
                 <Review key={index} {...key}/>
             ))
         }
-        {/* {pathName?.includes("localhost") && fakeData.map((key, index)=> (
+        {pathName?.includes("localhost") && fakeData.map((key, index)=> (
                 <Review key={index} {...key}/>
             ))
-            } */}
+            }
         </div>
 
         <hr/>
