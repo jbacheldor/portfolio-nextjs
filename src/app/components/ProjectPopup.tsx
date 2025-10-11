@@ -24,7 +24,7 @@ const ProjectPopup:React.FC<Props> = (props: Props) => {
                 <button className={styles.closebutton} onClick={() => closeWindow()}>x</button>
             </div>
             <div className={styles.popimg}>
-                <img width="60%" height="60%" alt="picture of project but larger" src={`${image}`}/>
+                <img width="45%" height="45%" alt="picture of project but larger" src={`${image}`}/>
             </div>
             <div className={styles.techstack}>
                 {techStack?.map((key, index)=> (

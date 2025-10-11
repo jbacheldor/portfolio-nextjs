@@ -30,6 +30,9 @@ const PortfolioPage = () => {
 
     return (
         <div className={styles.projectbody}>
+            {openProject.title != '' &&
+                <ProjectPopup {...openProject} onClose={() => closeWindow()}/>
+            }
             <h2 className={styles.h2}>Discography</h2>
             <hr/>
             <div className={styles.projects}>
@@ -37,9 +40,6 @@ const PortfolioPage = () => {
                 return  <ProjectCards key={key} {...i} onClick={(value: string) => openWindow(value)}/>
                 
             })}
-            {openProject.title != '' &&
-                <ProjectPopup {...openProject} onClose={() => closeWindow()}/>
-            }
             </div>
         </div>
     )
