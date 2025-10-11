@@ -69,6 +69,7 @@ const ReviewsPage:React.FC = () => {
                 setLoading(false)
 
                 // save data in indexdb
+                // should separate this try catch fr
                 await putDataIndexDB(res.data, test)
             })
             .catch((error) => {
@@ -81,8 +82,8 @@ const ReviewsPage:React.FC = () => {
             // const res = unassign(item)
 
             const newData = []
-            for (const key in data) {
-                newData.push(data[key])
+            for (const key in item) {
+                newData.push(item[key])
             }
             setData(newData)
             setSort(newData)
@@ -104,10 +105,6 @@ const ReviewsPage:React.FC = () => {
 
         const objData = Object.assign({}, data); 
         store.add(objData, 'data')
-
-        data.forEach((review: Review)=> {
-            store.add(review, review.id)
-        })
 
         await Promise.all([store.put(new Date().getTime(), 'timestamp'), rw.done]);
     }
@@ -142,7 +139,7 @@ const ReviewsPage:React.FC = () => {
         if (!pathName?.includes("localhost")) {
             launch()
         }
-    })
+    }, [pathName])
 
     const sortData = (value: string) => {
         // check to see who is sorting
@@ -173,7 +170,7 @@ const ReviewsPage:React.FC = () => {
             From the Vault:
         </h2>
         {errorMessage &&
-            <div>{errorMessage}</div>
+            <div id="error-msg"><p>{errorMessage}</p></div>
         }
         <div id="themes">
             <p>Review Display:</p>
@@ -253,6 +250,21 @@ const ReviewsPage:React.FC = () => {
                     100% {
                         transform: translateX(-1000px);
                     }
+                }
+                #error-msg {
+                    width: 100%;
+                    text-align: center;
+                    font-weight: 600;
+                    display: flex;
+                    justify-content: center;
+                }
+                #error-msg > p {
+                    padding: 10px;
+                    border: 1px solid black;
+                    border-radius: 10px;
+                    color: red;
+                    width: fit-content;
+                    margin: 10px;
                 }
                 #resetButton {
                     text-decoration: none;
