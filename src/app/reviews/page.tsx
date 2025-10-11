@@ -136,7 +136,7 @@ const ReviewsPage:React.FC = () => {
             await getData(test)
         }
         // if not local host then call getData
-        if (pathName?.includes("localhost")) {
+        if (!pathName?.includes("localhost")) {
             launch()
         }
     }, [pathName])
@@ -198,10 +198,10 @@ const ReviewsPage:React.FC = () => {
                 <Review key={index} {...key}/>
             ))
         }
-        {/* {pathName?.includes("localhost") && fakeData.map((key, index)=> (
+        {pathName?.includes("localhost") && fakeData.map((key, index)=> (
                 <Review key={index} {...key}/>
             ))
-            } */}
+            }
         </div>
 
         <hr/>
