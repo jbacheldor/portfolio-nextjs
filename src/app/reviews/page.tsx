@@ -12,6 +12,7 @@ type Review = {
     relation: string,
     company: string,
     rating?: number,
+    id?: number,
 }
 
 // const initialReview: Review = {
@@ -22,9 +23,12 @@ type Review = {
 //     company: ''
 // }
 
+
+type ibdDataObj = Review[]
+
 const ReviewsPage:React.FC = () => {
     const [data, setData] = useState<Review[] | []>([])
-    const [carosel, setCarosel] = useState(0)
+    // const [carosel, setCarosel] = useState(0)
     const pathName = process.env.BASE_URL
     const [errorMessage, setMsg] = useState('')
     const [sortedData, setSort] = useState<Review[] | []>([])
@@ -40,7 +44,7 @@ const ReviewsPage:React.FC = () => {
         const timestamp = await test.transaction('reviews').objectStore('reviews').get('timestamp')
         if(timestamp == null) return true
 
-        var now = new Date().getTime()
+        const now = new Date().getTime()
 
         // if it's been more than 60 minutes return true that query has expired 
         if(((now - timestamp)/1000/60) > 60) return true 
@@ -74,29 +78,34 @@ const ReviewsPage:React.FC = () => {
         } else {
             const transaction = test.transaction(['reviews'], "readwrite");
             const item = await transaction.objectStore('reviews').get('data')
-            const res = unassign(item)
-            setData(res)
-            setSort(res)
+            // const res = unassign(item)
+
+            const newData = []
+            for (const key in data) {
+                newData.push(data[key])
+            }
+            setData(newData)
+            setSort(newData)
             setLoading(false)
         }
     } 
 
-    const unassign = (data: any) => {
-        let newData = []
-        for (let key in data) {
-            newData.push(data[key])
-        }
-        return newData
-    }
+    // const unassign = (data: any) => {
+    //     const newData = []
+    //     for (const key in data) {
+    //         newData.push(data[key])
+    //     }
+    //     return newData
+    // }
 
-    async function putDataIndexDB (data: any, test: IDBPDatabase) {
+    async function putDataIndexDB (data: ibdDataObj, test: IDBPDatabase) {
         const rw = test.transaction(['reviews'], 'readwrite')
         const store = await rw.objectStore('reviews')
 
         const objData = Object.assign({}, data); 
         store.add(objData, 'data')
 
-        data.forEach((review: any)=> {
+        data.forEach((review: Review)=> {
             store.add(review, review.id)
         })
 
@@ -133,7 +142,7 @@ const ReviewsPage:React.FC = () => {
         if (!pathName?.includes("localhost")) {
             launch()
         }
-    }, [pathName])
+    })
 
     const sortData = (value: string) => {
         // check to see who is sorting
@@ -182,7 +191,7 @@ const ReviewsPage:React.FC = () => {
         <div id={`review-theme-${theme}`}>
         {loading && 
             <div id='loader'>
-                <img id="spin-img" src={"/svgs/spin.svg"} width="150px" height="150px"/>
+                <img alt="loading content" id="spin-img" src={"/svgs/spin.svg"} width="150px" height="150px"/>
                 {/* <img id="spin-img" src={"/md-star.svg"} width="100px" height="100px"/> */}
                 <span id='load-words'></span>
             </div>
