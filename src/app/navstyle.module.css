@@ -19,7 +19,7 @@
 }
 
 .links:hover {
-    cursor: pointer;
+   cursor: url('/svgs/red-splat.svg'), auto;
 }
 
 .rightside {
