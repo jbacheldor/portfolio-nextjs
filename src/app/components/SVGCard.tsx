@@ -10,7 +10,7 @@ const SVGCard:React.FC<SVGType> = (props: SVGType) => {
     return (
         <div className={styles.svgbody}>
             <h3>{title}</h3>
-            <Image className={styles.svgimg} alt="picture of svg" src={`${image}`} width={100} height={100} />
+            <Image className={styles.svgimg} alt="picture of svg" src={`${image}`} width={150} height={150} />
             <a href={`${image}`} download={`${title}`}>
                 <Button text="download"/> 
             </a>

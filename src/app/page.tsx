@@ -1,6 +1,15 @@
+'use client'
+import { useEffect } from 'react'
 import styles from './page.module.css'
 
 export default function Home() {
+  useEffect(()=> {
+    if('serviceWorker' in navigator){
+      navigator.serviceWorker.register('sw.js')
+      .then((registration) => console.log('scope is: ', registration.scope));
+    }
+  }, [])
+
   return (
     <div>
         <h2 className={styles.h2}>About Me</h2>
