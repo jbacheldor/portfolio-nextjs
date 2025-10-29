@@ -1,7 +1,7 @@
 'use client'
 import { redirect } from 'next/navigation'
 import styles from './navstyle.module.css'
-import { useEffect, useState } from 'react'
+import { useLayoutEffect, useState } from 'react'
 import Image from "next/image";
 
 const Navigation:React.FC = () => {
@@ -16,7 +16,7 @@ const Navigation:React.FC = () => {
         }
     }
 
-    useEffect(()=> {
+    useLayoutEffect(()=> {
         if(window){
             setActive(window.location.pathname.slice(1))
         }
