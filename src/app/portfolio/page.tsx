@@ -2,9 +2,9 @@
 import { useState } from "react";
 import ProjectCards from "../components/ProjectCards";
 import { projectsData } from "../data/projects";
-import ProjectPopup from "../components/ProjectPopup";
 import { ProjectCardsType } from "../types/Projects";
 import styles from './portfolio.module.css'
+import dynamic from 'next/dynamic';
 
 const initialData: ProjectCardsType = {
     title: '',
@@ -15,6 +15,12 @@ const initialData: ProjectCardsType = {
     image: '',
     onClick: () => {}
 }
+
+const PopUpComponent = dynamic(() => import ("../components/ProjectPopup"), {
+//   loading: () => <ChartSkeleton />,
+  ssr: false // Skip server-side rendering for client-only components
+});
+
 
 const PortfolioPage = () => {
     const [openProject, setProject] = useState<ProjectCardsType>(initialData)
@@ -31,7 +37,7 @@ const PortfolioPage = () => {
     return (
         <div className={styles.projectbody}>
             {openProject.title != '' &&
-                <ProjectPopup {...openProject} onClose={() => closeWindow()}/>
+                <PopUpComponent {...openProject} onClose={() => closeWindow()}/>
             }
             <h2 className={styles.h2}>Discography</h2>
             <hr/>
