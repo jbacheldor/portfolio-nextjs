@@ -1,6 +1,7 @@
 'use client'
 import { useEffect } from 'react'
 import styles from './page.module.css'
+import Image from 'next/image';
 
 export default function Home() {
   useEffect(()=> {
@@ -17,7 +18,7 @@ export default function Home() {
       <div className={styles.aboutBody}>
             <div className={styles.bio}>
                 <p>Hi, my name is <b>jess</b></p>
-                <img className={styles.img} alt="a young jess" src={'/young-me.png'} width="40%" height="40%"/>
+                <Image className={styles.img} alt="a young jess" src={'/young-me.png'} width={304} height={225}/>
                 <p>and I really like to make chaotic things!!</p>
                 <p>I think a lot about the intersection of tech and humanity and how a lot of our social interactions get lost in the web without an physical nudge! thus, i really like to think about, what happens when you create tech that is specifically centered around starting and ending with a human. </p>
                 <p>I also really love the returning to and reflecting upon the websites that influenced my early days on the internet including: <a href="https://www.addictinggames.com/" target="_blank">addicting games</a>, <a href="https://www.neopets.com/" target="_blank">neopets</a>, <a href="https://www.gaiaonline.com/" target="_blank">gaia online</a>, <a href="https://www.tumblr.com/" target="_blank">tumblr</a>, and so many more!</p>

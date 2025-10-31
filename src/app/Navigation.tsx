@@ -35,10 +35,8 @@ const Navigation:React.FC = () => {
              <h4>(she/her)</h4></span>
              <span className={styles.rightside}>
             <div>
-                {/* <img onClick={() => redirectTo("linkedin")} alt="linkedin" className={styles.links} src={"/inBug-Black.png"} width="20px" height="20px"/> */}
                 <Image onClick={() => redirectTo("linkedin")}  className={styles.links} alt="linkedin" src={"/InBug-Black.png"} width={20} height={20} />
                 <Image onClick={() => redirectTo("github")} className={styles.links} alt="github" src={"/github-mark.svg"} width={20} height={20} />
-                {/* <img onClick={() => redirectTo("linkedin")} alt="linkedin" className={styles.links} src={"/inBug-Black.png"} width="20px" height="20px"/> */}
             </div>
             <a href="mailto: jessica.bacheldor@gmail.com">jessica.bacheldor@gmail.com</a>
         </span>
