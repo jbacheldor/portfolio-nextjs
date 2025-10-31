@@ -8,14 +8,6 @@ const Navigation:React.FC = () => {
     const links: string[] = ["resume", "portfolio", "design", "reviews"]
     const [active, setActive] = useState("")
 
-    const redirectTo = (value: string) => {
-        if(value == "github"){
-            window.open("https://github.com/jbacheldor", '_blank')?.focus()
-        } else {
-             window.open("https://www.linkedin.com/in/jessica-bacheldor/", '_blank')?.focus()
-        }
-    }
-
     useLayoutEffect(()=> {
         if(window){
             setActive(window.location.pathname.slice(1))
@@ -26,6 +18,16 @@ const Navigation:React.FC = () => {
         setActive(e)
         if(e == "about") redirect(`/`)
         redirect(`/${e}`)
+    }
+
+    
+
+    const redirectTo = (value: string) => {
+        if(value == "github"){
+            window.open("https://github.com/jbacheldor", '_blank')?.focus()
+        } else {
+             window.open("https://www.linkedin.com/in/jessica-bacheldor/", '_blank')?.focus()
+        }
     }
 
     return (
@@ -41,7 +43,7 @@ const Navigation:React.FC = () => {
             <a href="mailto: jessica.bacheldor@gmail.com">jessica.bacheldor@gmail.com</a>
         </span>
         </div>
-        <div id="navigation" className={styles.navigation}>
+        <div className="navigation">
             <button id={"about" == active ? "active" : ""} onClick={()=> changeContent("about")} >{"about"}</button>
             {links.map((i, key)=> {
                 return (
@@ -50,32 +52,23 @@ const Navigation:React.FC = () => {
             })}
         </div>
         <hr/>
-        <style jsx>
+                <style jsx>
             {`
-                button {
-                    text-decoration: none;
+                .navigation {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
                     padding: 10px;
-                    margin: 10px;
-                    border-radius: 20px;
-                    background-color: pink;
-                    box-shadow: 2px 2px 10px peachpuff;
-                    color: chocolate;
-                    border: none;
-                    transition: top ease 0.5s;
-                    font-weight: 600;
+                    background-color: white;
                 }
                 button#active {
                     background-color: darksalmon;
                     color: white;
                 }
                 button:hover {
-                    cursor: url('/svgs/red-splat.svg'), auto;
                     position: relative;
                     top: -1px;
                     box-shadow: 4px 4px 10px peru, 2px 2px 20px darksalmon;
-                    }
-                h1:hover {
-                    // cursor: pointer;
                 }
 
             `}

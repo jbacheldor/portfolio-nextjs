@@ -21,7 +21,6 @@ const GifWrapper:React.FC<Props> = ({title, file})=> {
     }
 
     const changePlay = () => {
-        console.log('in here???')
         setPlay(!play)
     }
 

@@ -189,7 +189,9 @@ const ReviewsPage:React.FC = () => {
         <div id={`review-theme-${theme}`}>
         {loading && 
             <div id='loader'>
-                <Image alt="loading content" id="spin-img" src={"/svgs/spin.svg"} width={150} height={150}/>
+                <img alt="loading content" id="spin-img" src={"/svgs/spin.svg"} width={150} height={150}/>
+                {/* this one below isn't transitioning, bad ! */}
+                {/* <Image alt="loading content" id="spin-img" src={"/svgs/spin.svg"} width={150} height={150}/> */}
                 <span id='load-words'></span>
             </div>
             }
