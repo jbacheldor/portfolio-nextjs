@@ -20,8 +20,6 @@ const Navigation:React.FC = () => {
         redirect(`/${e}`)
     }
 
-    
-
     const redirectTo = (value: string) => {
         if(value == "github"){
             window.open("https://github.com/jbacheldor", '_blank')?.focus()
@@ -43,8 +41,8 @@ const Navigation:React.FC = () => {
             <a href="mailto: jessica.bacheldor@gmail.com">jessica.bacheldor@gmail.com</a>
         </span>
         </div>
-        <div className="navigation">
-            <button id={"about" == active ? "active" : ""} onClick={()=> changeContent("about")} >{"about"}</button>
+        <div className={styles.navigation}>
+            <button  id={"about" == active ? "active" : ""} onClick={()=> changeContent("about")} >{"about"}</button>
             {links.map((i, key)=> {
                 return (
                     <button id={i == active ? "active" : ""} onClick={()=> changeContent(i)} key={`${key}-button`}>{i}</button>
@@ -54,13 +52,6 @@ const Navigation:React.FC = () => {
         <hr/>
                 <style jsx>
             {`
-                .navigation {
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: space-between;
-                    padding: 10px;
-                    background-color: white;
-                }
                 button#active {
                     background-color: darksalmon;
                     color: white;
