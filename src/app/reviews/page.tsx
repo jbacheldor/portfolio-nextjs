@@ -5,6 +5,7 @@ import SubmitReview from "../components/SubmitReview";
 import { fakeData } from "../data/localData";
 import Button from "../components/Button";
 import { IDBPDatabase, openDB } from "idb";
+import Image from "next/image";
 type Review = {
     name: string,
     review: string,
@@ -188,8 +189,9 @@ const ReviewsPage:React.FC = () => {
         <div id={`review-theme-${theme}`}>
         {loading && 
             <div id='loader'>
-                <img alt="loading content" id="spin-img" src={"/svgs/spin.svg"} width="150px" height="150px"/>
-                {/* <img id="spin-img" src={"/md-star.svg"} width="100px" height="100px"/> */}
+                <img alt="loading content" id="spin-img" src={"/svgs/spin.svg"} width={150} height={150}/>
+                {/* this one below isn't transitioning, bad ! */}
+                {/* <Image alt="loading content" id="spin-img" src={"/svgs/spin.svg"} width={150} height={150}/> */}
                 <span id='load-words'></span>
             </div>
             }

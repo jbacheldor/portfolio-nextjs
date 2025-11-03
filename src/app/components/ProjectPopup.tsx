@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ProjectCardsType } from "../types/Projects";
 import Button from "./Button";
 import styles from './components.module.css'
@@ -24,7 +25,7 @@ const ProjectPopup:React.FC<Props> = (props: Props) => {
                 <button className={styles.closebutton} onClick={() => closeWindow()}>x</button>
             </div>
             <div className={styles.popimg}>
-                <img width="45%" height="45%" alt="picture of project but larger" src={`${image}`}/>
+                <Image width={225} height={266} alt="picture of project but larger" src={`${image}`}/>
             </div>
             <div className={styles.techstack}>
                 {techStack?.map((key, index)=> (
