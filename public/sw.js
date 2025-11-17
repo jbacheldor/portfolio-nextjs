@@ -14,17 +14,17 @@ const cacheClone = async(e) => {
     return res;
 };
 
-const fetchEvent = () => {
-    self.addEventListener('fetch', (e) => {
-        e.respondWith(
-            cacheClone(e)
-            .catch(() => caches.match(e.request))
-            .then((res) => res)
-        );
-    });
-};
+// const fetchEvent = () => {
+//     self.addEventListener('fetch', (e) => {
+//         e.respondWith(
+//             cacheClone(e)
+//             .catch(() => caches.match(e.request))
+//             .then((res) => res)
+//         );
+//     });
+// };
 
-fetchEvent();
+// fetchEvent();
 
 const installEvent = () => {
     self.addEventListener('install', () => {

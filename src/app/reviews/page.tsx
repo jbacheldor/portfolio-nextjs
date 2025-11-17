@@ -5,7 +5,7 @@ import SubmitReview from "../components/SubmitReview";
 import { fakeData } from "../data/localData";
 import Button from "../components/Button";
 import { IDBPDatabase, openDB } from "idb";
-import Image from "next/image";
+
 type Review = {
     name: string,
     review: string,
@@ -37,6 +37,7 @@ const ReviewsPage:React.FC = () => {
     const [theme, setTheme] = useState(false)
     const [indexDB, setIndexDB] = useState<IDBPDatabase>()
     const [loading, setLoading] = useState(true);
+    const [refresh, setRefresh] = useState(false)
 
     // if it's been more than an hour then system can disregard cache
     const queryExpired =  async (test: IDBPDatabase) => {
@@ -58,8 +59,9 @@ const ReviewsPage:React.FC = () => {
 
         // if the data is expired or if has been overriden by new submission,,, query new data!
         if(override || expired) {
-            await fetch(`${pathName}/server/getdata`)
+            await fetch(`${pathName}/server/getdata`, { cache: 'force-cache' })
             .then(async (data)=> {
+                console.log('data???', data)
                 if(data.status != 200){
                     setMsg('error getting data')
                 }

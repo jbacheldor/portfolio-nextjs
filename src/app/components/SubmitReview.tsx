@@ -75,12 +75,16 @@ const SubmitReview:React.FC<props> = ({onSubmit}) => {
             }
         )
         .then(async (response)=> {
+            console.log('response')
             if(response.status == 200) {
                 setMsg('WAHOOOO success')
+                console.log('in here')
                 setForm(initialForm)
+                console.log('form set???')
                 stars.current.forEach((item)=> {
                     if(item) item.style.filter = ""
                 })
+                console.log('on SURBMIT')
                 // this refreshes the data after submission
                 onSubmit()
             }

@@ -4,15 +4,9 @@ import { turso } from "../createClient";
 export async function POST(request: NextRequest){
     const form = await request.json()
     try {
-        const res = await turso.execute({
+        await turso.execute({
             sql: "INSERT INTO reviews (name, review, date, relation, company, rating) VALUES (?, ?, ?, ?, ?, ?)",
             args: [form.name, form.review, form.date, form.relation, form.company, form.rating]
-        })
-        .then((data)=> {
-            return NextResponse.json(
-                {data: data.rows},
-                {status: 200}
-            )
         })
         .catch((error) => {
             console.log('error !!! in execute')
@@ -22,12 +16,10 @@ export async function POST(request: NextRequest){
             )
         })
 
-        const data = await res.json()
         return NextResponse.json({
-            data: data.data,
-            status: res.status
+            message: 'review submitted successfully',
+            status: 200
         })
-
 
     }catch(error){
         console.log('error of error', error)
